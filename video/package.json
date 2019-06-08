@@ -1,0 +1,84 @@
+{
+  "name": "@namespace/video",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "lodash": "4.6.1",
+    "video.js": "^7.5.4"
+  },
+  "datav": {
+    "cn_name": "视频",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "300",
+      "height": "150"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "video视频组件接口描述",
+        "fields": {
+          "poster": {
+            "description": "封面地址"
+          },
+          "url": {
+            "description": "视频地址"
+          }
+        }
+      }
+    },
+    "config": {
+      "volume": {
+        "name": "音量(%)",
+        "type": "number",
+            "range": [
+              0,
+              100
+            ],
+        "default": 50
+      },
+      "controls": {
+        "name": "控制条",
+        "type": "boolean",
+        "default": true
+      },
+      "poster": {
+        "name": "封面地址",
+        "type": "text",
+        "default": "https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=1928175418,1881610586&fm=85&s=1A116084AF5303CC5CDEA812030050C9"
+      }, 
+      "url": {
+        "name": "视频地址",
+        "type": "text",
+        "default": "https://blz-videos.nosdn.127.net/1/HearthStone/f6cd63b590d416821d3e27e0.mp4"
+      },  
+      "autoplay": {
+        "name": "自动播放",
+        "type": "boolean",
+        "default": true
+      },
+      "loop": {
+        "name": "循环播放",
+        "type": "boolean",
+        "default": true
+      },
+      "muted": {
+        "name": "静音",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "poster": "",
+          "url": ""
+        }
+      ]
+    }
+  }
+}

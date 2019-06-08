@@ -1,0 +1,44 @@
+{
+  "name": "@namespace/shape-circle",
+  "version": "0.0.1",
+  "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "圆形小物件",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "150",
+      "height": "100"
+    },
+    "apis": {},
+    "config": {
+      "stroke-Width": {
+        "name": "边框宽度",
+        "type": "number",
+        "range": [
+          0,
+          100
+        ],
+        "default": 0
+      },
+      "stroke": {
+        "name": "边框颜色",
+        "type": "color",
+        "default": "#24CBFF"
+      },
+      "fill": {
+        "name": "填充颜色",
+        "type": "color",
+        "default": "#7760F6"
+      }
+    },
+    "api_data": {}
+  }
+}

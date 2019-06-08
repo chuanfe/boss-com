@@ -1,0 +1,38 @@
+{
+  "name": "@namespace/shape-line",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "直线小物件",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "150",
+      "height": "50"
+    },
+    "apis": {},
+    "config": {
+      "stroke-width": {
+        "name": "边框宽度",
+        "type": "number",
+        "range": [
+          0,
+          100
+        ],
+        "default":1
+      },
+      "stroke": {
+        "name": "边框颜色",
+        "type": "color",
+        "default": "#24CBFF"
+      }
+    },
+    "api_data": {}
+  }
+}

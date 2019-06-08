@@ -1,0 +1,45 @@
+{
+  "name": "@namespace/iframe",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "iframe",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "350",
+      "height": "200"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "Iframe组件接口描述",
+        "fields": {
+          "url": {
+            "description": "iframe地址"
+          }
+        }
+      }
+    },
+    "config": {
+      "url": {
+        "name": "iframe地址",
+        "type": "text",
+        "default": "http://www.baidu.com"
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "url": ""
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "@namespace/single-img",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "lodash": "4.6.1",
+    "xss": "^1.0.6"
+  },
+  "datav": {
+    "cn_name": "单张图片",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "300",
+      "height": "150"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "单张图片接口",
+        "fields": {
+          "img": {
+            "description": "图片路径(可以为空,从配置读取)",
+            "optional": true
+          }
+        }
+      }
+    },
+    "config": {
+      "backgroundImage": {
+        "name": "背景图",
+        "type": "image",
+        "default": "https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=1928175418,1881610586&fm=85&s=1A116084AF5303CC5CDEA812030050C9"
+      },
+      "backgroundRepeat": {
+        "name": "图片重复",
+        "type": "select",
+        "default": "no-repeat",
+        "options": [
+          {
+            "name": "不重复，拉伸满",
+            "value": "no-repeat"
+          },
+          {
+            "name": "水平和垂直重复",
+            "value": "repeat"
+          },
+          {
+            "name": "水平重复",
+            "value": "repeat-x"
+          },
+          {
+            "name": "垂直重复",
+            "value": "repeat-y"
+          }
+        ]
+      },
+      "urlConfig": {
+        "name": "超链接配置",
+        "type": "group",
+        "description": "点击标题区域可跳转至设定的超链接",
+        "children": {
+          "url": {
+            "name": "超链接",
+            "type": "text",
+            "default": ""
+          },
+          "ifBlank": {
+            "name": "是否新开窗口",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "img": "",
+          "url": ""
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "name": "@namespace/shape-rectangle",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "矩形小物件",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "150",
+      "height": "100"
+    },
+    "apis": {},
+    "config": {
+      "border-width": {
+        "name": "边框宽度",
+        "type": "number",
+        "range": [
+          0,
+          100
+        ],
+        "default":0
+      },
+      "border-color": {
+        "name": "边框颜色",
+        "type": "color",
+        "default": "#24CBFF"
+      },
+      "background-color": {
+        "name": "填充颜色",
+        "type": "color",
+        "default": "#7760F6"
+      },
+      "border-top-right-radius": {
+        "name": "右上圆角",
+        "type": "number",
+        "range": [
+          0,
+          500
+        ],
+        "default":0
+      },
+      "border-bottom-right-radius": {
+        "name": "右下圆角",
+        "type": "number",
+        "range": [
+          0,
+          500
+        ],
+        "default":0
+      },
+      "border-bottom-left-radius": {
+        "name": "左下圆角",
+        "type": "number",
+        "range": [
+          0,
+          500
+        ],
+        "default":0
+      },
+      "border-top-left-radius": {
+        "name": "左上圆角",
+        "type": "number",
+        "range": [
+          0,
+          500
+        ],
+        "default":0
+      }
+    },
+    "api_data": {}
+  }
+}

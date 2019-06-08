@@ -1,0 +1,35 @@
+{
+  "name": "boss-com",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint --ext .js,jsx web server",
+    "stylelint": "stylelint web/**/*.less"
+  },
+  "pre-commit": [
+    "eslint",
+    "stylelint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://172.16.42.34/CMB/ex-work-platform.git"
+  },
+  "keywords": [],
+  "author": "CMB",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "4.10.0",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.4.0",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0",
+    "pre-commit": "^1.2.2"
+  }
+}

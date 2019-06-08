@@ -1,0 +1,179 @@
+{
+  "name": "@namespace/text-scroll",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "lodash": "4.6.1",
+    "xss": "^1.0.6"
+  },
+  "datav": {
+    "cn_name": "跑马灯",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "300",
+      "height": "60"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "fields": {
+          "value": {
+            "description": "文本内容",
+            "optional": true
+          },
+          "url": {
+            "description": "文本链接",
+            "optional": true
+          }
+        }
+      }
+    },
+    "config": {
+      "content": {
+        "type": "text",
+        "name": "文本内容",
+        "default": "这是跑马灯效果，多谢您的尝试！"
+      },
+      "textStyle": {
+        "type": "group",
+        "name": "文本样式",
+        "children": {
+          "fontFamily": {
+            "name": "字体",
+            "type": "search",
+            "range": [
+              {
+                "微软雅黑": "Microsoft Yahei"
+              },
+              {
+                "宋体": "SimSun"
+              },
+              {
+                "黑体": "SimHei"
+              },
+              {
+                "隶书": "LiSu"
+              },
+              {
+                "幼圆": "YouYuan"
+              },
+              "tahoma",
+              "arial",
+              "sans-serif"
+            ],
+            "default": "Microsoft Yahei"
+          },
+          "fontSize": {
+            "type": "number",
+            "name": "字号",
+            "min": 10,
+            "max": 200,
+            "default": 30
+          },
+          "color": {
+            "name": "字体颜色",
+            "type": "color",
+            "default": "#fff"
+          },
+          "fontWeight": {
+            "name": "字体粗细",
+            "type": "search",
+            "default": "normal",
+            "searches": [
+              "normal",
+              "bold",
+              "bolder",
+              "lighter",
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900
+            ]
+          }
+        }
+      },
+      "scrollConfig": {
+        "name": "文本滚动配置",
+        "type": "group",
+        "children": {
+          "onOff": {
+            "name": "开启文字滚动",
+            "type": "boolean",
+            "default": true
+          },
+          "duration": {
+            "name": "动画时长",
+            "type": "number",
+            "min": 0,
+            "default": 3500
+          },
+          "duplicated": {
+            "name": "循环",
+            "type": "boolean",
+            "default": true
+          },
+          "gap": {
+            "name": "间隙",
+            "type": "number",
+            "min": 0,
+            "default": 10
+          },
+          "pauseOnHover": {
+            "name": "文本悬停暂停",
+            "type": "boolean",
+            "default": false
+          },
+          "delayBeforeStart": {
+            "name": "延迟时间",
+            "type": "number",
+            "min": 0,
+            "default": 1000
+          }   
+        }
+      },
+      "urlConfig": {
+        "name": "超链接配置",
+        "type": "group",
+        "children": {
+          "url": {
+            "name": "超链接",
+            "type": "string",
+            "default": ""
+          },
+          "ifBlank": {
+            "name": "是否新开窗口",
+            "type": "boolean",
+            "default": false
+          },
+          "color": {
+            "name": "悬停文字颜色",
+            "type": "color",
+            "default": "#fff"
+          },
+          "ifUnderline": {
+            "name": "悬停显示下划线",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "value": "",
+          "url": ""
+        }
+      ]
+    }
+  }
+}
