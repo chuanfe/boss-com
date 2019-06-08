@@ -1,0 +1,491 @@
+{
+  "name": "echart_pie",
+  "version": "1.2.5",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "echarts": "^4.2.1",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1",
+    "zrender": "3.4.4"
+  },
+  "datav": {
+    "cnName": "饼图",
+    "enName": "echart_pie",
+    "icon": "//img.alicdn.com/tfs/TB1SRZMJY9YBuNjy0FgXXcxcXXa-270-160.png",
+    "protocol": 2,
+    "type": "regular_pie",
+    "view": {
+      "width": "600",
+      "height": "200",
+      "minWidth": "40",
+      "minHeight": "20",
+      "deg": 0,
+      "opacity": 1
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "echart_pie",
+        "fields": {
+          "x": {
+            "description": "name"
+          },
+          "y": {
+            "description": "value"
+          }
+        }
+      }
+    },
+    "config": {
+      "legend": {
+        "name": "图例",
+        "type": "group",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": true
+          },
+          "selectedPostion": {
+            "name": "位置",
+            "type": "select",
+            "options": [
+              {
+                "name": "顶上居中",
+                "value": "topCenter"
+              },
+              {
+                "name": "顶上居左",
+                "value": "topLeft"
+              },
+              {
+                "name": "顶上居右",
+                "value": "topRight"
+              },
+              {
+                "name": "顶下居中",
+                "value": "bottomCenter"
+              },
+              {
+                "name": "顶下居左",
+                "value": "bottomLeft"
+              },
+              {
+                "name": "顶下居右",
+                "value": "bottomRight"
+              },
+              {
+                "name": "右侧居中",
+                "value": "rightCenter"
+              },
+              {
+                "name": "左侧居中",
+                "value": "leftCenter"
+              }
+            ],
+            "default": "topCenter"
+          },
+          "selectedMode": {
+            "name": "多选模式",
+            "type": "boolean",
+            "default": true
+          },
+          "textStyle": {
+            "name": "文本样式",
+            "type": "group",
+            "children": {
+              "color": {
+                "name": "颜色",
+                "type": "color",
+                "default": "rgba(255,255,255,.6)"
+              },
+              "fontFamily": {
+                "name": "字体",
+                "type": "search",
+                "options": [
+                  {
+                    "name": "微软雅黑",
+                    "value": "Microsoft YaHei"
+                  },
+                  {
+                    "name": "宋体",
+                    "value": "SimSun"
+                  },
+                  {
+                    "name": "黑体",
+                    "value": "SimHei"
+                  },
+                  {
+                    "name": "隶书",
+                    "value": "LiSu"
+                  },
+                  {
+                    "name": "幼圆",
+                    "value": "YouYuan"
+                  },
+                  {
+                    "name": "arial",
+                    "value": "arial"
+                  },
+                  {
+                    "name": "sans-serif",
+                    "value": "sans-serif"
+                  }
+                ],
+                "default": "Microsoft YaHei"
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 12
+              }
+            }
+          }
+        }
+      },
+      "tooltip": {
+        "name": "提示框",
+        "type": "group",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": true
+          },
+          "trigger": {
+            "name": "触发类型",
+            "type": "select",
+            "options": [
+              {
+                "name": "数据项图形",
+                "value": "item"
+              },
+              {
+                "name": "坐标轴",
+                "value": "axis"
+              },
+              {
+                "name": "无",
+                "value": "none"
+              }
+            ],
+            "default": "item"
+          },
+          "backgroundColor": {
+            "name": "背景色",
+            "type": "multicolor",
+            "default": {
+              "style": "single",
+              "value": "rgba(50,50,50,0.7)"
+            }
+          },
+          "textStyle": {
+            "name": "文本样式",
+            "type": "group",
+            "children": {
+              "color": {
+                "name": "颜色",
+                "type": "color",
+                "default": "#fff"
+              },
+              "fontFamily": {
+                "name": "字体",
+                "type": "search",
+                "options": [
+                  {
+                    "name": "微软雅黑",
+                    "value": "Microsoft YaHei"
+                  },
+                  {
+                    "name": "宋体",
+                    "value": "SimSun"
+                  },
+                  {
+                    "name": "黑体",
+                    "value": "SimHei"
+                  },
+                  {
+                    "name": "隶书",
+                    "value": "LiSu"
+                  },
+                  {
+                    "name": "幼圆",
+                    "value": "YouYuan"
+                  },
+                  {
+                    "name": "arial",
+                    "value": "arial"
+                  },
+                  {
+                    "name": "sans-serif",
+                    "value": "sans-serif"
+                  }
+                ],
+                "default": "Microsoft YaHei"
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 12
+              }
+            }
+          }
+        }
+      },
+      "series": {
+        "name": "系列",
+        "type": "group",
+        "children": {
+          "positionTop": {
+            "name": "距上位置",
+            "type": "string",
+            "default": "50%"
+          },
+          "positionLeft": {
+            "name": "距左位置",
+            "type": "string",
+            "default": "50%"
+          },
+          "radius": {
+            "name": "半径",
+            "type": "string",
+            "default": "80%"
+          },
+          "minAngle": {
+            "name": "最小角度",
+            "type": "number",
+            "default": 0
+          },
+          "label": {
+            "name": "标签",
+            "type": "group",
+            "children": {
+              "show": {
+                "name": "显示",
+                "type": "boolean",
+                "default": true
+              },
+              "fontFamily": {
+                "name": "字体",
+                "type": "search",
+                "options": [
+                  {
+                    "name": "微软雅黑",
+                    "value": "Microsoft YaHei"
+                  },
+                  {
+                    "name": "宋体",
+                    "value": "SimSun"
+                  },
+                  {
+                    "name": "黑体",
+                    "value": "SimHei"
+                  },
+                  {
+                    "name": "隶书",
+                    "value": "LiSu"
+                  },
+                  {
+                    "name": "幼圆",
+                    "value": "YouYuan"
+                  },
+                  {
+                    "name": "arial",
+                    "value": "arial"
+                  },
+                  {
+                    "name": "sans-serif",
+                    "value": "sans-serif"
+                  }
+                ],
+                "default": "Microsoft YaHei"
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 14
+              },
+              "color": {
+                "name": "颜色",
+                "type": "color",
+                "default": "auto"
+              }
+            }
+          },
+          "labelLine": {
+            "name": "线段设置",
+            "type": "group",
+            "children": {
+              "show": {
+                "name": "显示",
+                "type": "boolean",
+                "default": true
+              },
+              "length": {
+                "name": "一线段长度",
+                "type": "number",
+                "default": 20
+              },
+              "length2": {
+                "name": "二线段长度",
+                "type": "number",
+                "default": 10
+              },
+              "smooth": {
+                "name": "平滑",
+                "type": "boolean",
+                "default": false
+              }
+            }
+          },
+          "color": {
+            "name": "色系添加",
+            "type": "array",
+            "default": [
+              {
+                "color": "#c4ccd3"
+              }
+            ],
+            "child": {
+              "type": "object",
+              "name": "色彩<%= i+1 %>",
+              "child": {
+                "color": {
+                  "name": "颜色",
+                  "type": "color",
+                  "default": "#c4ccd3"
+                }
+              }
+            }
+          }
+        }
+      },
+      "animation": {
+        "name": "动画",
+        "type": "boolean",
+        "default": true
+      },
+      "animationThreshold": {
+        "name": "动画阈值",
+        "type": "number",
+        "default": 2000
+      },
+      "animationDuration": {
+        "name": "动画时长",
+        "type": "number",
+        "default": 1000
+      },
+      "animationEasing": {
+        "name": "缓动效果",
+        "type": "search",
+        "options": [
+          {
+            "name": "linear",
+            "value": "linear"
+          },
+          {
+            "name": "quadraticIn",
+            "value": "quadraticIn"
+          },
+          {
+            "name": "quadraticOut",
+            "value": "quadraticOut"
+          },
+          {
+            "name": "quadraticInOut",
+            "value": "quadraticInOut"
+          },
+          {
+            "name": "cubicIn",
+            "value": "cubicIn"
+          },
+          {
+            "name": "cubicOut",
+            "value": "cubicOut"
+          },
+          {
+            "name": "cubicInOut",
+            "value": "cubicInOut"
+          },
+          {
+            "name": "quarticIn",
+            "value": "quarticIn"
+          },
+          {
+            "name": "quarticOut",
+            "value": "quarticOut"
+          },
+          {
+            "name": "quarticInOut",
+            "value": "quarticInOut"
+          },
+          {
+            "name": "sinusoidalIn",
+            "value": "sinusoidalIn"
+          },
+          {
+            "name": "sinusoidalOut",
+            "value": "sinusoidalOut"
+          },
+          {
+            "name": "sinusoidalInOut",
+            "value": "sinusoidalInOut"
+          },
+          {
+            "name": "exponentialIn",
+            "value": "exponentialIn"
+          },
+          {
+            "name": "exponentialOut",
+            "value": "exponentialOut"
+          },
+          {
+            "name": "exponentialInOut",
+            "value": "exponentialInOut"
+          },
+          {
+            "name": "circularIn",
+            "value": "circularIn"
+          }
+        ],
+        "default": "linear"
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "x": "类目1",
+          "y": 120
+        },
+        {
+          "x": "类目2",
+          "y": 50
+        },
+        {
+          "x": "类目3",
+          "y": 130
+        },
+        {
+          "x": "类目4",
+          "y": 110
+        },
+        {
+          "x": "类目5",
+          "y": 30
+        },
+        {
+          "x": "类目6",
+          "y": 30
+        },
+        {
+          "x": "类目7",
+          "y": 50
+        },
+        {
+          "x": "类目8",
+          "y": 120
+        }
+      ]
+    }
+  }
+}
