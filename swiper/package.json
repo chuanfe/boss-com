@@ -1,0 +1,313 @@
+{
+  "name": "@namespace/wfq",
+  "version": "0.0.1",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "echarts": "^3.5.4",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1",
+    "zrender": "^3.4.4"
+  },
+  "datav": {
+    "cn_name": "轮播图",
+    "level": 0,
+    "icon": "http://localhost:6721/resource/imgs/TB1c67AcjfguuRjSspkXXXchpXa-270-160.png",
+    "protocol": 2,
+    "type": [
+      "media_image"
+    ],
+    "view": {
+      "width": "600",
+      "height": "338",
+      "minWidth": "200",
+      "minHeight": "100",
+      "z-index": 110
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "接口描述",
+        "fields": {
+          "url": {
+            "type": "string",
+            "description": "图片地址"
+          },
+          "description": {
+            "type": "string",
+            "description": "图片描述",
+            "optional": true
+          }
+        }
+      }
+    },
+    "config": {
+      "imgconfig": {
+        "type": "group",
+        "name": "图片设置",
+        "fold": true,
+        "children": {
+          "fillType": {
+            "type": "select",
+            "name": "填充方式",
+            "options": [
+              {
+                "name": "原始尺寸",
+                "value": "auto"
+              },
+              {
+                "name": "横向铺满容器",
+                "value": "100%"
+              },
+              {
+                "name": "纵向铺满容器",
+                "value": "auto 100%"
+              },
+              {
+                "name": "按比例铺满容器",
+                "value": "cover"
+              },
+              {
+                "name": "拉伸铺满容器",
+                "value": "100% 100%"
+              }
+            ],
+            "default": "100% 100%"
+          },
+          "opacity": {
+            "type": "number",
+            "name": "透明度",
+            "default": 1,
+            "range": [
+              0,
+              1
+            ],
+            "step": 0.1
+          }
+        }
+      },
+      "animate": {
+        "type": "group",
+        "name": "动画",
+        "fold": true,
+        "children": {
+          "interval": {
+            "type": "number",
+            "name": "停顿(ms)",
+            "default": 2500
+          },
+          "speed": {
+            "type": "number",
+            "name": "速度(ms)",
+            "default": 500
+          },
+          "direction": {
+            "type": "select",
+            "name": "特效",
+            "options": [
+              {
+                "name": "水平滚动",
+                "value": "horizontal"
+              },
+              {
+                "name": "垂直滚动",
+                "value": "vertical"
+              }
+            ],
+            "default": "horizontal"
+          }
+        }
+      },
+      "description": {
+        "handler": "updateDescription",
+        "type": "group",
+        "name": "描述",
+        "fold": true,
+        "children": {
+          "show": {
+            "type": "boolean",
+            "default": true,
+            "name": "显示",
+            "handler": "updateDescription"
+          },
+          "background": {
+            "type": "color",
+            "default": "rgba(0, 0, 0, 0.7)",
+            "name": "文字背景颜色",
+            "show": [
+              [
+                "show",
+                "$eq",
+                true
+              ]
+            ],
+            "handler": "updateDescription"
+          },
+          "color": {
+            "type": "color",
+            "default": "#ffffff",
+            "name": "文字颜色",
+            "show": [
+              [
+                "show",
+                "$eq",
+                true
+              ]
+            ],
+            "handler": "updateDescription"
+          },
+          "fontSize": {
+            "type": "number",
+            "name": "字号",
+            "default": 14,
+            "min": 12,
+            "max": 100,
+            "range": [
+              10,
+              100
+            ]
+          },
+          "fontWeight": {
+            "name": "字体粗细",
+            "type": "select",
+            "default": "normal",
+            "options": [
+              "normal",
+              "bold",
+              "bolder",
+              "lighter",
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900
+            ],
+            "show": [
+              [
+                "show",
+                "$eq",
+                true
+              ]
+            ],
+            "handler": "updateDescription"
+          },
+          "align": {
+            "type": "select",
+            "name": "对齐方式",
+            "options": [
+              {
+                "name": "向左",
+                "value": "left"
+              },
+              {
+                "name": "居中",
+                "value": "center"
+              },
+              {
+                "name": "向右",
+                "value": "right"
+              }
+            ],
+            "default": "center",
+            "show": [
+              [
+                "show",
+                "$eq",
+                true
+              ]
+            ],
+            "handler": "updateDescription"
+          },
+          "horpos": {
+            "type": "select",
+            "name": "标题垂直位置",
+            "options": [
+              {
+                "name": "顶部",
+                "value": "top"
+              },
+              {
+                "name": "底部",
+                "value": "bottom"
+              }
+            ],
+            "default": "top",
+            "show": [
+              [
+                "show",
+                "$eq",
+                true
+              ]
+            ],
+            "handler": "updateDescription"
+          }
+        }
+      },
+      "dot": {
+        "handler": "updateDot",
+        "type": "group",
+        "name": "圆点",
+        "fold": true,
+        "children": {
+          "show": {
+            "type": "boolean",
+            "default": true,
+            "name": "显示",
+            "handler": "updateDot"
+          },
+          "color": {
+            "type": "color",
+            "default": "#ffffff",
+            "name": "圆点颜色",
+            "show": [
+              [
+                "show",
+                "$eq",
+                true
+              ]
+            ],
+            "handler": "updateDot"
+          },
+          "current": {
+            "type": "color",
+            "default": "#70b075",
+            "name": "当前颜色",
+            "show": [
+              [
+                "show",
+                "$eq",
+                true
+              ]
+            ],
+            "handler": "updateDot"
+          }
+        }
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "description": "这是第一张图片的描述",
+          "url": "https://img.alicdn.com/tps/TB1PH6EPXXXXXXbaFXXXXXXXXXX-4001-2251.png",
+          "link": "http://www.w3school.com.cn/jquery/jquery_css.asp"
+        },
+        {
+          "description": "这是第二张图片的描述",
+          "url": "https://img.alicdn.com/tps/TB10kzBPXXXXXXaaFXXXXXXXXXX-4001-2251.png",
+          "link": "https://segmentfault.com/q/1010000004327674"
+        },
+        {
+          "description": "这是第三张图片的描述",
+          "url": "https://img.alicdn.com/tps/TB1PH6EPXXXXXXbaFXXXXXXXXXX-4001-2251.png",
+          "link": "https://segmentfault.com/q/1010000004327674"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "swiper": "^4.5.0"
+  }
+}
