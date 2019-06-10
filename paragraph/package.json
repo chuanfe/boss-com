@@ -1,12 +1,10 @@
 {
-  "name": "@namespace/wfq",
+  "name": "@namespace/paragraph",
   "version": "0.0.1",
   "dependencies": {
     "bcore": "0.0.18",
-    "echarts": "^3.5.4",
     "jquery": "2.1.4",
-    "lodash": "4.6.1",
-    "zrender": "^3.4.4"
+    "lodash": "4.6.1"
   },
   "datav": {
     "cn_name": "多行文本",
