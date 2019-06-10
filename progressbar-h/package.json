@@ -1,8 +1,7 @@
 {
-  "name": "@namespace/progressHBar",
+  "name": "@namespace/progressbar-h",
   "version": "0.0.1",
   "dependencies": {
-    "bcore": "0.0.18",
     "jquery": "2.1.4",
     "lodash": "4.6.1"
   },
@@ -25,7 +24,10 @@
         "description": "接口描述",
         "fields": {
           "value": {
-            "description": "进度百分比"
+            "description": "值"
+          },
+          "total": {
+            "description": "总数"
           }
         }
       }
@@ -34,7 +36,7 @@
       "fineness": {
         "name": "进度条粗细",
         "type": "number",
-        "default": 20
+        "default": 10
       },
       "borderRadius": {
         "name": "进度条圆角",
@@ -63,45 +65,68 @@
             "type": "boolean",
             "default": true
           },
-          "tipColor": {
-            "name": "提示文字色值",
+          "fontFamily": {
+            "name": "字体",
+            "type": "search",
+            "range": [
+              {
+                "微软雅黑": "Microsoft Yahei"
+              },
+              {
+                "宋体": "SimSun"
+              },
+              {
+                "黑体": "SimHei"
+              },
+              {
+                "隶书": "LiSu"
+              },
+              {
+                "幼圆": "YouYuan"
+              },
+              "tahoma",
+              "arial",
+              "sans-serif"
+            ],
+            "default": "Microsoft Yahei"
+          },
+          "fontSize": {
+            "name": "字号",
+            "type": "number",
+            "default": 18
+          },
+          "color": {
+            "name": "字体颜色",
             "type": "color",
             "default": "rgb(115, 170, 229)"
           },
-          "tipFontSize": {
-            "name": "提示文字字号",
-            "type": "number",
-            "default": 24
-          },
-          "tipFontWeight": {
-            "name": "文字粗细",
-            "type": "select",
-            "options": [
-              {
-                "name": "lighter",
-                "value": "lighter"
-              },
-              {
-                "name": "normal",
-                "value": "normal"
-              },
-              {
-                "name": "bold",
-                "value": "bold"
-              },
-              {
-                "name": "bolder",
-                "value": "bolder"
-              }
+          "fontWeight": {
+            "name": "字体粗细",
+            "type": "search",
+            "searches": [
+              "normal",
+              "bold",
+              "bolder",
+              "lighter",
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900
             ],
-            "default": "bold"
+            "default": "normal"
           },
-          "tipFix": {
+          "fixed": {
             "name": "小数位数",
             "type": "number",
+            "min": 0,
             "default": 0
           },
-          "showRealValue": {
+          "isRealValue": {
             "name": "显示真实值",
             "type": "boolean",
             "default": false
@@ -110,10 +135,12 @@
       }
     },
     "api_data": {
-      "source": {
-        "value": 23.1111111,
-        "total": 100
-      }
+      "source": [
+        {
+          "value": 23.1111111,
+          "total": 100
+        }
+      ]
     }
   }
 }
