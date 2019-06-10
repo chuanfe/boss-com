@@ -3,6 +3,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import EChart from 'echarts';
 import 'echarts-wordcloud';
+import utils from './utils';
 
 class EchartWorldcloud {
   constructor(container, config) {
@@ -25,11 +26,14 @@ class EchartWorldcloud {
   }
 
   fixConfig(config) {
+    config = utils.fixConfigToEchart(config);
+
     if (!config) {
       return;
     }
+
     const {
-      mainColor,
+      global,
       series,
       ...restconfig
     } = config;
@@ -41,7 +45,6 @@ class EchartWorldcloud {
 
     this.config = _.merge(
       {
-        color: _.map(mainColor, m => m.color),
         legend: {
           bottom: 5
         },
@@ -55,39 +58,40 @@ class EchartWorldcloud {
         series: [{
           type: 'wordCloud',
           shape: 'circle',
-          // left: 'center',
-          // top: 'center',
           width: '100%',
           height: '100%',
           right: null,
           bottom: null,
           rotationStep: 45,
           drawOutOfBound: false,
-          textStyle: {
-            normal: {
-              color() {
-                // Random color
-                return `rgb(${[
-                  Math.round(Math.random() * 160),
-                  Math.round(Math.random() * 160),
-                  Math.round(Math.random() * 160)
-                ].join(',')})`;
-              }
-            },
-            emphasis: {
-              shadowBlur: 10,
-              shadowColor: '#333'
-            }
-          },
+
           data: []
         }]
       },
       {
         series: [
           {
+            ...restSerie,
             sizeRange: [sizeRange.min, sizeRange.max],
-            rotationRange: [rotationRange.min, rotationRange.max],
-            ...restSerie
+            rotationRange: [rotationRange.min, rotationRange.max]
+
+          }
+        ]
+      },
+      {
+        series: [
+          {
+            textStyle: {
+              normal: {
+                color: (global.randomColor) ? function () {
+                  return `rgb(${[
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160),
+                    Math.round(Math.random() * 160)
+                  ].join(',')})`;
+                } : global.textStyle.color
+              }
+            }
           }
         ]
       },
@@ -99,7 +103,6 @@ class EchartWorldcloud {
   fixData(data) {
     if (data) {
       this.data = data;
-      // 数据转换
     }
     const {
       series

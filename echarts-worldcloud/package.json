@@ -10,22 +10,22 @@
     "zrender": "3.4.4"
   },
   "datav": {
-    "cn_name": "文字云",
+    "cn_name": "字符云",
     "icon": "",
     "protocol": 2,
     "type": [
       "regular_worldcloud"
     ],
     "view": {
-      "width": "400",
-      "height": "350",
+      "width": "450",
+      "height": "300",
       "minWidth": "40",
       "minHeight": "20"
     },
     "apis": {
       "source": {
         "handler": "render",
-        "description": "echarts动画延迟柱状图接口描述",
+        "description": "echarts字符云接口描述",
         "fields": {
           "x": {
             "description": "类目"
@@ -37,62 +37,65 @@
       }
     },
     "config": {
-      "mainColor": {
-        "name": "主题色",
-        "type": "array",
-        "default": [
-          {
-            "color": "#3fb1e3"
-          },
-          {
-            "color": "#6be6c1"
-          },
-          {
-            "color": "#626c91"
-          },
-          {
-            "color": "#a0a7e6"
-          },
-          {
-            "color": "#c4ebad"
-          },
-          {
-            "color": "#96dee8"
-          }
-        ],
-        "child": {
-          "type": "object",
-          "name": "主题色<%= i+1 %>",
-          "child": {
-            "color": {
-              "name": "颜色",
-              "type": "color",
-              "default": "red"
-            }
-          }
-        }
-      },
-      "tooltip": {
-        "name": "提示框",
+      "global": {
+        "name": "全局",
         "type": "group",
         "children": {
-          "show": { 
-            "name": "显示",
+          "mainColor": {
+            "name": "主题色",
+            "type": "group",
+            "children": {
+              "color1": {
+                "name": "颜色1",
+                "type": "color",
+                "default": "#3fb1e3"
+              },
+              "color2": {
+                "name": "颜色2",
+                "type": "color",
+                "default": "#6be6c1"
+              },
+              "color3": {
+                "name": "颜色3",
+                "type": "color",
+                "default": "#626c91"
+              },
+              "color4": {
+                "name": "颜色4",
+                "type": "color",
+                "default": "#a0a7e6"
+              },
+              "color5": {
+                "name": "颜色5",
+                "type": "color",
+                "default": "#c4ebad"
+              },
+              "color6": {
+                "name": "颜色6",
+                "type": "color",
+                "default": "#96dee8"
+              }
+            }
+          },
+          "randomColor": {
+            "name": "字体颜色随机",
             "type": "boolean",
             "default": true
-          },
-          "backgroundColor": {
-            "name": "背景色",
-            "type": "multicolor",
-            "default": {
-              "style": "single",
-              "value": "rgba(50,50,50,0.7)"
-            }
           },
           "textStyle": {
             "name": "文本样式",
             "type": "group",
             "children": {
+              "color": {
+                "name": "字体颜色",
+                "type": "color",
+                "default": "#3fb1e3"
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 12
+              },
               "fontFamily": {
                 "name": "字体",
                 "type": "search",
@@ -126,13 +129,54 @@
                     "value": "sans-serif"
                   }
                 ],
-                "default": "Microsoft Yahei",
-                "description": "如果系统无此字体,标题将会显示默认字体"
+                "default": "Microsoft Yahei"
               },
+              "fontWeight": {
+                "name": "字体粗细",
+                "type": "search",
+                "searches": [
+                  "normal",
+                  "bold",
+                  "bolder",
+                  "lighter",
+                  100,
+                  200,
+                  300,
+                  400,
+                  500,
+                  600,
+                  700,
+                  800,
+                  900
+                ],
+                "default": "normal"
+              }
+            }
+          }
+        }
+      },
+      "tooltip": {
+        "name": "提示框",
+        "type": "group",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": true
+          },
+          "backgroundColor": {
+            "name": "背景色",
+            "type": "color",
+            "default": "rgba(50,50,50,0.7)"
+          },
+          "textStyle": {
+            "name": "文本样式",
+            "type": "group",
+            "children": {
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": "#ffffff"
+                "default": "#fff"
               },
               "fontSize": {
                 "name": "字号",
@@ -156,18 +200,10 @@
               "max": 60
             },
             "rotationRange": {
-              "min":-90,
+              "min": -90,
               "max": 90
             },
-            "gridSize": 8,
-            "textStyle": {
-              "normal": {
-                "fontFamily": "Microsoft Yahei"
-              },
-              "emphasis": {
-                "fontFamily": "Microsoft Yahei"
-              }
-            }
+            "gridSize": 8
           }
         ],
         "child": {
@@ -185,6 +221,10 @@
                 {
                   "name": "椭圆形",
                   "value": "ellipse"
+                },
+                {
+                  "name": "五边形",
+                  "value": "pentagon"
                 }
               ],
               "default": "circle"
@@ -233,104 +273,6 @@
               "name": "文字间距",
               "type": "number",
               "default": 8
-            },
-            "textStyle": {
-              "name": "文本样式",
-              "type": "group",
-              "children": {
-                "normal": {
-                  "name": "普通项",
-                  "type": "group",
-                  "children": {
-                    "show": {
-                      "name": "显示",
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "fontFamily": {
-                      "name": "字体",
-                      "type": "search",
-                      "options": [
-                        {
-                          "name": "微软雅黑",
-                          "value": "Microsoft Yahei"
-                        },
-                        {
-                          "name": "宋体",
-                          "value": "SimSun"
-                        },
-                        {
-                          "name": "黑体",
-                          "value": "SimHei"
-                        },
-                        {
-                          "name": "隶书",
-                          "value": "LiSu"
-                        },
-                        {
-                          "name": "幼圆",
-                          "value": "YouYuan"
-                        },
-                        {
-                          "name": "arial",
-                          "value": "arial"
-                        },
-                        {
-                          "name": "sans-serif",
-                          "value": "sans-serif"
-                        }
-                      ],
-                      "default": "Microsoft Yahei"
-                    }
-                  }
-                },
-                "emphasis": {
-                  "name": "重点项",
-                  "type": "group",
-                  "children": {
-                    "show": {
-                      "name": "显示",
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "fontFamily": {
-                      "name": "字体",
-                      "type": "search",
-                      "options": [
-                        {
-                          "name": "微软雅黑",
-                          "value": "Microsoft Yahei"
-                        },
-                        {
-                          "name": "宋体",
-                          "value": "SimSun"
-                        },
-                        {
-                          "name": "黑体",
-                          "value": "SimHei"
-                        },
-                        {
-                          "name": "隶书",
-                          "value": "LiSu"
-                        },
-                        {
-                          "name": "幼圆",
-                          "value": "YouYuan"
-                        },
-                        {
-                          "name": "arial",
-                          "value": "arial"
-                        },
-                        {
-                          "name": "sans-serif",
-                          "value": "sans-serif"
-                        }
-                      ],
-                      "default": "Microsoft Yahei"
-                    }
-                  }
-                }
-              }
             }
           }
         }
@@ -485,24 +427,1352 @@
     "api_data": {
       "source": [
         {
-          "x": "直接访问",
+          "x": "visualMap",
+          "y": 22199
+        },
+        {
+          "x": "continuous",
+          "y": 10288
+        },
+        {
+          "x": "contoller",
+          "y": 620
+        },
+        {
+          "x": "series",
+          "y": 274470
+        },
+        {
+          "x": "gauge",
+          "y": 12311
+        },
+        {
+          "x": "detail",
+          "y": 1206
+        },
+        {
+          "x": "piecewise",
+          "y": 4885
+        },
+        {
+          "x": "textStyle",
+          "y": 32294
+        },
+        {
+          "x": "markPoint",
+          "y": 18574
+        },
+        {
+          "x": "pie",
+          "y": 38929
+        },
+        {
+          "x": "roseType",
+          "y": 969
+        },
+        {
+          "x": "label",
+          "y": 37517
+        },
+        {
+          "x": "emphasis",
+          "y": 12053
+        },
+        {
+          "x": "yAxis",
+          "y": 57299
+        },
+        {
+          "x": "x",
+          "y": 15418
+        },
+        {
+          "x": "type",
+          "y": 22905
+        },
+        {
+          "x": "gridIndex",
+          "y": 5146
+        },
+        {
+          "x": "normal",
+          "y": 49487
+        },
+        {
+          "x": "itemStyle",
+          "y": 33837
+        },
+        {
+          "x": "min",
+          "y": 4500
+        },
+        {
+          "x": "silent",
+          "y": 5744
+        },
+        {
+          "x": "animation",
+          "y": 4840
+        },
+        {
+          "x": "offsetCenter",
+          "y": 232
+        },
+        {
+          "x": "inverse",
+          "y": 3706
+        },
+        {
+          "x": "borderColor",
+          "y": 4812
+        },
+        {
+          "x": "markLine",
+          "y": 16578
+        },
+        {
+          "x": "line",
+          "y": 76970
+        },
+        {
+          "x": "radiusAxis",
+          "y": 6704
+        },
+        {
+          "x": "radar",
+          "y": 15964
+        },
+        {
+          "x": "data",
+          "y": 60679
+        },
+        {
+          "x": "dataZoom",
+          "y": 24347
+        },
+        {
+          "x": "tooltip",
+          "y": 43420
+        },
+        {
+          "x": "toolbox",
+          "y": 25222
+        },
+        {
+          "x": "geo",
+          "y": 16904
+        },
+        {
+          "x": "parallelAxis",
+          "y": 4029
+        },
+        {
+          "x": "parallel",
+          "y": 5319
+        },
+        {
+          "x": "max",
+          "y": 3393
+        },
+        {
+          "x": "bar",
+          "y": 43066
+        },
+        {
+          "x": "heatmap",
+          "y": 3110
+        },
+        {
+          "x": "map",
+          "y": 20285
+        },
+        {
+          "x": "animationDuration",
+          "y": 3425
+        },
+        {
+          "x": "animationDelay",
+          "y": 2431
+        },
+        {
+          "x": "splitNumber",
+          "y": 5175
+        },
+        {
+          "x": "axisLine",
+          "y": 12738
+        },
+        {
+          "x": "lineStyle",
+          "y": 19601
+        },
+        {
+          "x": "splitLine",
+          "y": 7133
+        },
+        {
+          "x": "axisTick",
+          "y": 8831
+        },
+        {
+          "x": "axisLabel",
+          "y": 17516
+        },
+        {
+          "x": "pointer",
+          "y": 590
+        },
+        {
+          "x": "color",
+          "y": 23426
+        },
+        {
+          "x": "title",
+          "y": 38497
+        },
+        {
+          "x": "formatter",
+          "y": 15214
+        },
+        {
+          "x": "slider",
+          "y": 7236
+        },
+        {
+          "x": "legend",
+          "y": 66514
+        },
+        {
+          "x": "grid",
+          "y": 28516
+        },
+        {
+          "x": "smooth",
+          "y": 1295
+        },
+        {
+          "x": "smoothMonotone",
+          "y": 696
+        },
+        {
+          "x": "sampling",
+          "y": 757
+        },
+        {
+          "x": "feature",
+          "y": 12815
+        },
+        {
+          "x": "saveAsImage",
+          "y": 2616
+        },
+        {
+          "x": "polar",
+          "y": 6279
+        },
+        {
+          "x": "calculable",
+          "y": 879
+        },
+        {
+          "x": "backgroundColor",
+          "y": 9419
+        },
+        {
+          "x": "excludeComponents",
+          "y": 130
+        },
+        {
+          "x": "show",
+          "y": 20620
+        },
+        {
+          "x": "text",
+          "y": 2592
+        },
+        {
+          "x": "icon",
+          "y": 2782
+        },
+        {
+          "x": "dimension",
+          "y": 478
+        },
+        {
+          "x": "inRange",
+          "y": 1060
+        },
+        {
+          "x": "animationEasing",
+          "y": 2983
+        },
+        {
+          "x": "animationDurationUpdate",
+          "y": 2259
+        },
+        {
+          "x": "animationDelayUpdate",
+          "y": 2236
+        },
+        {
+          "x": "animationEasingUpdate",
+          "y": 2213
+        },
+        {
+          "x": "xAxis",
+          "y": 89459
+        },
+        {
+          "x": "angleAxis",
+          "y": 5469
+        },
+        {
+          "x": "showTitle",
+          "y": 484
+        },
+        {
+          "x": "dataView",
+          "y": 2754
+        },
+        {
+          "x": "restore",
+          "y": 932
+        },
+        {
+          "x": "timeline",
+          "y": 10104
+        },
+        {
+          "x": "range",
+          "y": 477
+        },
+        {
+          "x": "y",
+          "y": 5732
+        },
+        {
+          "x": "precision",
+          "y": 878
+        },
+        {
+          "x": "target",
+          "y": 1433
+        },
+        {
+          "x": "zlevel",
+          "y": 5361
+        },
+        {
+          "x": "symbol",
+          "y": 8718
+        },
+        {
+          "x": "interval",
+          "y": 7964
+        },
+        {
+          "x": "symbolSize",
+          "y": 5300
+        },
+        {
+          "x": "showSymbol",
+          "y": 1247
+        },
+        {
+          "x": "inside",
+          "y": 8913
+        },
+        {
+          "x": "xAxisIndex",
+          "y": 3843
+        },
+        {
+          "x": "orient",
+          "y": 4205
+        },
+        {
+          "x": "boundaryGap",
+          "y": 5073
+        },
+        {
+          "x": "xGap",
+          "y": 4896
+        },
+        {
+          "x": "zoomLock",
+          "y": 571
+        },
+        {
+          "x": "hoverAnimation",
+          "y": 2307
+        },
+        {
+          "x": "legendHoverLink",
+          "y": 3553
+        },
+        {
+          "x": "stack",
+          "y": 2907
+        },
+        {
+          "x": "throttle",
+          "y": 466
+        },
+        {
+          "x": "connectNulls",
+          "y": 897
+        },
+        {
+          "x": "clipOverflow",
+          "y": 826
+        },
+        {
+          "x": "starty",
+          "y": 551
+        },
+        {
+          "x": "minInterval",
+          "y": 3292
+        },
+        {
+          "x": "opacity",
+          "y": 3097
+        },
+        {
+          "x": "splitArea",
+          "y": 4775
+        },
+        {
+          "x": "filterMode",
+          "y": 635
+        },
+        {
+          "x": "end",
+          "y": 409
+        },
+        {
+          "x": "left",
+          "y": 6475
+        },
+        {
+          "x": "funnel",
+          "y": 2238
+        },
+        {
+          "x": "lines",
+          "y": 6403
+        },
+        {
+          "x": "baseline",
+          "y": 431
+        },
+        {
+          "x": "align",
+          "y": 2608
+        },
+        {
+          "x": "coord",
+          "y": 897
+        },
+        {
+          "x": "xTextStyle",
+          "y": 7477
+        },
+        {
+          "x": "width",
+          "y": 4338
+        },
+        {
+          "x": "shadowBlur",
+          "y": 4493
+        },
+        {
+          "x": "effect",
+          "y": 929
+        },
+        {
+          "x": "period",
+          "y": 225
+        },
+        {
+          "x": "areaColor",
+          "y": 631
+        },
+        {
+          "x": "borderWidth",
+          "y": 3654
+        },
+        {
+          "x": "xLocation",
+          "y": 4418
+        },
+        {
+          "x": "position",
+          "y": 11723
+        },
+        {
+          "x": "containLabel",
+          "y": 1701
+        },
+        {
+          "x": "scatter",
+          "y": 10718
+        },
+        {
+          "x": "areaStyle",
+          "y": 5310
+        },
+        {
+          "x": "scale",
+          "y": 3859
+        },
+        {
+          "x": "pieces",
+          "y": 414
+        },
+        {
+          "x": "categories",
+          "y": 1000
+        },
+        {
+          "x": "selectedMode",
+          "y": 3825
+        },
+        {
+          "x": "itemSymbol",
+          "y": 273
+        },
+        {
+          "x": "effectScatter",
+          "y": 7147
+        },
+        {
+          "x": "fontStyle",
+          "y": 3376
+        },
+        {
+          "x": "fontSize",
+          "y": 3386
+        },
+        {
+          "x": "margin",
+          "y": 1034
+        },
+        {
+          "x": "iconStyle",
+          "y": 2257
+        },
+        {
+          "x": "link",
+          "y": 1366
+        },
+        {
+          "x": "axisPointer",
+          "y": 5245
+        },
+        {
+          "x": "showDelay",
+          "y": 896
+        },
+        {
+          "x": "graph",
+          "y": 22194
+        },
+        {
+          "x": "subtext",
+          "y": 1442
+        },
+        {
+          "x": "selected",
+          "y": 2881
+        },
+        {
+          "x": "barCategoryGap",
+          "y": 827
+        },
+        {
+          "x": "barGap",
+          "y": 1094
+        },
+        {
+          "x": "barWidth",
+          "y": 1521
+        },
+        {
+          "x": "coordinateSystem",
+          "y": 3622
+        },
+        {
+          "x": "barBorderRadius",
+          "y": 284
+        },
+        {
+          "x": "z",
+          "y": 4014
+        },
+        {
+          "x": "polarIndex",
+          "y": 1456
+        },
+        {
+          "x": "shadowOffsetX",
+          "y": 3046
+        },
+        {
+          "x": "shadowColor",
+          "y": 3771
+        },
+        {
+          "x": "shadowOffsetY",
+          "y": 2475
+        },
+        {
+          "x": "height",
+          "y": 1988
+        },
+        {
+          "x": "barMinHeight",
+          "y": 575
+        },
+        {
+          "x": "lang",
+          "y": 131
+        },
+        {
+          "x": "symbolRotate",
+          "y": 2752
+        },
+        {
+          "x": "symbolOffset",
+          "y": 2549
+        },
+        {
+          "x": "showAllSymbol",
+          "y": 942
+        },
+        {
+          "x": "transitionDuration",
+          "y": 993
+        },
+        {
+          "x": "bottom",
+          "y": 3724
+        },
+        {
+          "x": "fillerColor",
+          "y": 229
+        },
+        {
+          "x": "xMap",
+          "y": 1249
+        },
+        {
+          "x": "barMaxWidth",
+          "y": 747
+        },
+        {
+          "x": "radius",
+          "y": 2103
+        },
+        {
+          "x": "center",
+          "y": 2425
+        },
+        {
+          "x": "magicType",
+          "y": 3276
+        },
+        {
+          "x": "labelPrecision",
+          "y": 248
+        },
+        {
+          "x": "option",
+          "y": 654
+        },
+        {
+          "x": "seriesIndex",
+          "y": 935
+        },
+        {
+          "x": "controlPosition",
+          "y": 121
+        },
+        {
+          "x": "itemGap",
+          "y": 3188
+        },
+        {
+          "x": "padding",
+          "y": 3481
+        },
+        {
+          "x": "shadowStyle",
+          "y": 347
+        },
+        {
+          "x": "boxplot",
+          "y": 1394
+        },
+        {
+          "x": "labelFormatter",
+          "y": 264
+        },
+        {
+          "x": "realtime",
+          "y": 631
+        },
+        {
+          "x": "dataBackgroundColor",
+          "y": 239
+        },
+        {
+          "x": "showDetail",
+          "y": 247
+        },
+        {
+          "x": "showDataShadow",
+          "y": 217
+        },
+        {
+          "x": "x",
+          "y": 684
+        },
+        {
+          "x": "yDim",
+          "y": 499
+        },
+        {
+          "x": "onZero",
+          "y": 931
+        },
+        {
+          "x": "right",
+          "y": 3255
+        },
+        {
+          "x": "clockwise",
+          "y": 1035
+        },
+        {
+          "x": "itemWidth",
+          "y": 1732
+        },
+        {
+          "x": "trigger",
+          "y": 3840
+        },
+        {
+          "x": "axis",
+          "y": 379
+        },
+        {
+          "x": "selectedOffset",
+          "y": 670
+        },
+        {
+          "x": "startAngle",
+          "y": 1293
+        },
+        {
+          "x": "minAngle",
+          "y": 590
+        },
+        {
+          "x": "top",
+          "y": 4637
+        },
+        {
+          "x": "avoidLabelOverlap",
+          "y": 870
+        },
+        {
+          "x": "labelLine",
+          "y": 3785
+        },
+        {
+          "x": "sankey",
+          "y": 2933
+        },
+        {
+          "x": "endAngle",
+          "y": 213
+        },
+        {
+          "x": "start",
+          "y": 779
+        },
+        {
+          "x": "roam",
+          "y": 1738
+        },
+        {
+          "x": "fontWeight",
+          "y": 2828
+        },
+        {
+          "x": "fontFamily",
+          "y": 2490
+        },
+        {
+          "x": "subtextStyle",
+          "y": 2066
+        },
+        {
+          "x": "indicator",
+          "y": 853
+        },
+        {
+          "x": "sublink",
+          "y": 708
+        },
+        {
+          "x": "zoom",
+          "y": 1038
+        },
+        {
+          "x": "subtarget",
+          "y": 659
+        },
+        {
+          "x": "length",
+          "y": 1060
+        },
+        {
+          "x": "itemSize",
+          "y": 505
+        },
+        {
+          "x": "controlStyle",
+          "y": 452
+        },
+        {
+          "x": "yAxisIndex",
+          "y": 2529
+        },
+        {
+          "x": "edgeLabel",
+          "y": 1188
+        },
+        {
+          "x": "radiusAxisIndex",
+          "y": 354
+        },
+        {
+          "x": "scaleLimit",
+          "y": 1313
+        },
+        {
+          "x": "geoIndex",
+          "y": 535
+        },
+        {
+          "x": "regions",
+          "y": 1892
+        },
+        {
+          "x": "itemHeight",
+          "y": 1290
+        },
+        {
+          "x": "nodes",
+          "y": 644
+        },
+        {
+          "x": "candlestick",
+          "y": 3166
+        },
+        {
+          "x": "crossStyle",
+          "y": 466
+        },
+        {
+          "x": "edges",
+          "y": 369
+        },
+        {
+          "x": "links",
+          "y": 3277
+        },
+        {
+          "x": "layout",
+          "y": 846
+        },
+        {
+          "x": "barBorderColor",
+          "y": 721
+        },
+        {
+          "x": "barBorderWidth",
+          "y": 498
+        },
+        {
+          "x": "treemap",
+          "y": 3865
+        },
+        {
+          "x": "y",
+          "y": 367
+        },
+        {
+          "x": "yIndex",
+          "y": 704
+        },
+        {
+          "x": "showLegendSymbol",
+          "y": 482
+        },
+        {
+          "x": "mapyCalculation",
+          "y": 492
+        },
+        {
+          "x": "optionToContent",
+          "y": 264
+        },
+        {
+          "x": "handleColor",
+          "y": 187
+        },
+        {
+          "x": "handleSize",
+          "y": 271
+        },
+        {
+          "x": "showContent",
+          "y": 1853
+        },
+        {
+          "x": "angleAxisIndex",
+          "y": 406
+        },
+        {
+          "x": "endy",
+          "y": 327
+        },
+        {
+          "x": "triggerOn",
+          "y": 1720
+        },
+        {
+          "x": "contentToOption",
+          "y": 169
+        },
+        {
+          "x": "buttonColor",
+          "y": 71
+        },
+        {
+          "x": "rotate",
+          "y": 1144
+        },
+        {
+          "x": "hoverLink",
           "y": 335
         },
         {
-          "x": "邮件营销",
-          "y": 310
+          "x": "outOfRange",
+          "y": 491
         },
         {
-          "x": "联盟广告",
-          "y": 234
+          "x": "textareaColor",
+          "y": 58
         },
         {
-          "x": "视频广告",
-          "y": 135
+          "x": "textareaBorderColor",
+          "y": 58
         },
         {
-          "x": "搜索引擎",
-          "y": 1548
+          "x": "textColor",
+          "y": 60
+        },
+        {
+          "x": "buttonTextColor",
+          "y": 66
+        },
+        {
+          "x": "category",
+          "y": 336
+        },
+        {
+          "x": "hideDelay",
+          "y": 786
+        },
+        {
+          "x": "alwaysShowContent",
+          "y": 1267
+        },
+        {
+          "x": "extraCssText",
+          "y": 901
+        },
+        {
+          "x": "effectType",
+          "y": 277
+        },
+        {
+          "x": "force",
+          "y": 1820
+        },
+        {
+          "x": "rippleEffect",
+          "y": 723
+        },
+        {
+          "x": "edgeSymbolSize",
+          "y": 329
+        },
+        {
+          "x": "showEffectOn",
+          "y": 271
+        },
+        {
+          "x": "gravity",
+          "y": 199
+        },
+        {
+          "x": "edgeLength",
+          "y": 193
+        },
+        {
+          "x": "layoutAnimation",
+          "y": 152
+        },
+        {
+          "x": "length2",
+          "y": 169
+        },
+        {
+          "x": "enterable",
+          "y": 957
+        },
+        {
+          "x": "dim",
+          "y": 83
+        },
+        {
+          "x": "readOnly",
+          "y": 143
+        },
+        {
+          "x": "levels",
+          "y": 444
+        },
+        {
+          "x": "textGap",
+          "y": 256
+        },
+        {
+          "x": "pixelRatio",
+          "y": 84
+        },
+        {
+          "x": "nodeScaleRatio",
+          "y": 232
+        },
+        {
+          "x": "draggable",
+          "y": 249
+        },
+        {
+          "x": "brushType",
+          "y": 158
+        },
+        {
+          "x": "radarIndex",
+          "y": 152
+        },
+        {
+          "x": "large",
+          "y": 182
+        },
+        {
+          "x": "edgeSymbol",
+          "y": 675
+        },
+        {
+          "x": "largeThreshold",
+          "y": 132
+        },
+        {
+          "x": "leafDepth",
+          "y": 73
+        },
+        {
+          "x": "childrenVisibleMin",
+          "y": 73
+        },
+        {
+          "x": "minSize",
+          "y": 35
+        },
+        {
+          "x": "maxSize",
+          "y": 35
+        },
+        {
+          "x": "sort",
+          "y": 90
+        },
+        {
+          "x": "funnelAlign",
+          "y": 61
+        },
+        {
+          "x": "source",
+          "y": 336
+        },
+        {
+          "x": "nodeClick",
+          "y": 200
+        },
+        {
+          "x": "curveness",
+          "y": 350
+        },
+        {
+          "x": "areaSelectStyle",
+          "y": 104
+        },
+        {
+          "x": "parallelIndex",
+          "y": 52
+        },
+        {
+          "x": "initLayout",
+          "y": 359
+        },
+        {
+          "x": "trailLength",
+          "y": 116
+        },
+        {
+          "x": "boxWidth",
+          "y": 20
+        },
+        {
+          "x": "back",
+          "y": 53
+        },
+        {
+          "x": "rewind",
+          "y": 110
+        },
+        {
+          "x": "zoomToNodeRatio",
+          "y": 80
+        },
+        {
+          "x": "squareRatio",
+          "y": 60
+        },
+        {
+          "x": "parallelAxisDefault",
+          "y": 358
+        },
+        {
+          "x": "checkpointStyle",
+          "y": 440
+        },
+        {
+          "x": "nodeWidth",
+          "y": 49
+        },
+        {
+          "x": "color0",
+          "y": 62
+        },
+        {
+          "x": "layoutIterations",
+          "y": 56
+        },
+        {
+          "x": "nodeGap",
+          "y": 54
+        },
+        {
+          "x": "color(Array",
+          "y": 76
+        },
+        {
+          "x": "<string>)",
+          "y": 76
+        },
+        {
+          "x": "repulsion",
+          "y": 276
+        },
+        {
+          "x": "tiled",
+          "y": 105
+        },
+        {
+          "x": "currentIndex",
+          "y": 145
+        },
+        {
+          "x": "axisType",
+          "y": 227
+        },
+        {
+          "x": "loop",
+          "y": 97
+        },
+        {
+          "x": "playInterval",
+          "y": 112
+        },
+        {
+          "x": "borderColor0",
+          "y": 23
+        },
+        {
+          "x": "gap",
+          "y": 43
+        },
+        {
+          "x": "autoPlay",
+          "y": 123
+        },
+        {
+          "x": "showPlayBtn",
+          "y": 25
+        },
+        {
+          "x": "breadcrumb",
+          "y": 119
+        },
+        {
+          "x": "colorMappingBy",
+          "y": 85
+        },
+        {
+          "x": "id",
+          "y": 18
+        },
+        {
+          "x": "blurSize",
+          "y": 85
+        },
+        {
+          "x": "minOpacity",
+          "y": 50
+        },
+        {
+          "x": "maxOpacity",
+          "y": 54
+        },
+        {
+          "x": "prevIcon",
+          "y": 12
+        },
+        {
+          "x": "children",
+          "y": 21
+        },
+        {
+          "x": "shape",
+          "y": 98
+        },
+        {
+          "x": "nextIcon",
+          "y": 12
+        },
+        {
+          "x": "showNextBtn",
+          "y": 17
+        },
+        {
+          "x": "stopIcon",
+          "y": 21
+        },
+        {
+          "x": "visibleMin",
+          "y": 83
+        },
+        {
+          "x": "visualDimension",
+          "y": 97
+        },
+        {
+          "x": "colorSaturation",
+          "y": 56
+        },
+        {
+          "x": "colorAlpha",
+          "y": 66
+        },
+        {
+          "x": "emptyItemWidth",
+          "y": 10
+        },
+        {
+          "x": "inactiveOpacity",
+          "y": 4
+        },
+        {
+          "x": "activeOpacity",
+          "y": 4
+        },
+        {
+          "x": "showPrevBtn",
+          "y": 19
+        },
+        {
+          "x": "playIcon",
+          "y": 26
+        },
+        {
+          "x": "ellipsis",
+          "y": 19
+        },
+        {
+          "x": "gapWidth",
+          "y": 19
+        },
+        {
+          "x": "borderColorSaturation",
+          "y": 10
+        },
+        {
+          "x": "handleIcon",
+          "y": 2
+        },
+        {
+          "x": "handleStyle",
+          "y": 6
+        },
+        {
+          "x": "borderType",
+          "y": 1
+        },
+        {
+          "x": "constantSpeed",
+          "y": 1
+        },
+        {
+          "x": "polyline",
+          "y": 2
+        },
+        {
+          "x": "blendMode",
+          "y": 1
+        },
+        {
+          "x": "dataBackground",
+          "y": 1
+        },
+        {
+          "x": "textAlign",
+          "y": 1
+        },
+        {
+          "x": "textBaseline",
+          "y": 1
+        },
+        {
+          "x": "brush",
+          "y": 3
         }
       ]
     }
