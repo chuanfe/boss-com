@@ -1,0 +1,510 @@
+{
+  "name": "@echarts/echarts-worldcloud",
+  "version": "1.2.5",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "echarts": "^4.2.1",
+    "echarts-wordcloud": "^1.1.3",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1",
+    "zrender": "3.4.4"
+  },
+  "datav": {
+    "cn_name": "文字云",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular_worldcloud"
+    ],
+    "view": {
+      "width": "400",
+      "height": "350",
+      "minWidth": "40",
+      "minHeight": "20"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "echarts动画延迟柱状图接口描述",
+        "fields": {
+          "x": {
+            "description": "类目"
+          },
+          "y": {
+            "description": "值"
+          }
+        }
+      }
+    },
+    "config": {
+      "mainColor": {
+        "name": "主题色",
+        "type": "array",
+        "default": [
+          {
+            "color": "#3fb1e3"
+          },
+          {
+            "color": "#6be6c1"
+          },
+          {
+            "color": "#626c91"
+          },
+          {
+            "color": "#a0a7e6"
+          },
+          {
+            "color": "#c4ebad"
+          },
+          {
+            "color": "#96dee8"
+          }
+        ],
+        "child": {
+          "type": "object",
+          "name": "主题色<%= i+1 %>",
+          "child": {
+            "color": {
+              "name": "颜色",
+              "type": "color",
+              "default": "red"
+            }
+          }
+        }
+      },
+      "tooltip": {
+        "name": "提示框",
+        "type": "group",
+        "children": {
+          "show": { 
+            "name": "显示",
+            "type": "boolean",
+            "default": true
+          },
+          "backgroundColor": {
+            "name": "背景色",
+            "type": "multicolor",
+            "default": {
+              "style": "single",
+              "value": "rgba(50,50,50,0.7)"
+            }
+          },
+          "textStyle": {
+            "name": "文本样式",
+            "type": "group",
+            "children": {
+              "fontFamily": {
+                "name": "字体",
+                "type": "search",
+                "options": [
+                  {
+                    "name": "微软雅黑",
+                    "value": "Microsoft Yahei"
+                  },
+                  {
+                    "name": "宋体",
+                    "value": "SimSun"
+                  },
+                  {
+                    "name": "黑体",
+                    "value": "SimHei"
+                  },
+                  {
+                    "name": "隶书",
+                    "value": "LiSu"
+                  },
+                  {
+                    "name": "幼圆",
+                    "value": "YouYuan"
+                  },
+                  {
+                    "name": "arial",
+                    "value": "arial"
+                  },
+                  {
+                    "name": "sans-serif",
+                    "value": "sans-serif"
+                  }
+                ],
+                "default": "Microsoft Yahei",
+                "description": "如果系统无此字体,标题将会显示默认字体"
+              },
+              "color": {
+                "name": "颜色",
+                "type": "color",
+                "default": "#ffffff"
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 10
+              }
+            }
+          }
+        }
+      },
+      "series": {
+        "name": "数据系列",
+        "type": "array",
+        "silent": true,
+        "default": [
+          {
+            "type": "wordCloud",
+            "shape": "circle",
+            "sizeRange": {
+              "min": 12,
+              "max": 60
+            },
+            "rotationRange": {
+              "min":-90,
+              "max": 90
+            },
+            "gridSize": 8,
+            "textStyle": {
+              "normal": {
+                "fontFamily": "Microsoft Yahei"
+              },
+              "emphasis": {
+                "fontFamily": "Microsoft Yahei"
+              }
+            }
+          }
+        ],
+        "child": {
+          "type": "object",
+          "name": "系列<%= i+1 %>",
+          "child": {
+            "shape": {
+              "name": "呈现的形状",
+              "type": "select",
+              "options": [
+                {
+                  "name": "圆形",
+                  "value": "circle"
+                },
+                {
+                  "name": "椭圆形",
+                  "value": "ellipse"
+                }
+              ],
+              "default": "circle"
+            },
+            "sizeRange": {
+              "name": "字体大小区间",
+              "type": "group",
+              "children": {
+                "min": {
+                  "name": "最小字号",
+                  "type": "number",
+                  "default": 12
+                },
+                "max": {
+                  "name": "最大字号",
+                  "type": "number",
+                  "default": 60
+                }
+              }
+            },
+            "rotationRange": {
+              "name": "旋转角度区间",
+              "type": "group",
+              "children": {
+                "min": {
+                  "name": "最小角度",
+                  "type": "number",
+                  "range": [
+                    -360,
+                    360
+                  ],
+                  "default": -90
+                },
+                "max": {
+                  "name": "最大角度",
+                  "type": "number",
+                  "range": [
+                    -360,
+                    360
+                  ],
+                  "default": 90
+                }
+              }
+            },
+            "gridSize": {
+              "name": "文字间距",
+              "type": "number",
+              "default": 8
+            },
+            "textStyle": {
+              "name": "文本样式",
+              "type": "group",
+              "children": {
+                "normal": {
+                  "name": "普通项",
+                  "type": "group",
+                  "children": {
+                    "show": {
+                      "name": "显示",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "fontFamily": {
+                      "name": "字体",
+                      "type": "search",
+                      "options": [
+                        {
+                          "name": "微软雅黑",
+                          "value": "Microsoft Yahei"
+                        },
+                        {
+                          "name": "宋体",
+                          "value": "SimSun"
+                        },
+                        {
+                          "name": "黑体",
+                          "value": "SimHei"
+                        },
+                        {
+                          "name": "隶书",
+                          "value": "LiSu"
+                        },
+                        {
+                          "name": "幼圆",
+                          "value": "YouYuan"
+                        },
+                        {
+                          "name": "arial",
+                          "value": "arial"
+                        },
+                        {
+                          "name": "sans-serif",
+                          "value": "sans-serif"
+                        }
+                      ],
+                      "default": "Microsoft Yahei"
+                    }
+                  }
+                },
+                "emphasis": {
+                  "name": "重点项",
+                  "type": "group",
+                  "children": {
+                    "show": {
+                      "name": "显示",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "fontFamily": {
+                      "name": "字体",
+                      "type": "search",
+                      "options": [
+                        {
+                          "name": "微软雅黑",
+                          "value": "Microsoft Yahei"
+                        },
+                        {
+                          "name": "宋体",
+                          "value": "SimSun"
+                        },
+                        {
+                          "name": "黑体",
+                          "value": "SimHei"
+                        },
+                        {
+                          "name": "隶书",
+                          "value": "LiSu"
+                        },
+                        {
+                          "name": "幼圆",
+                          "value": "YouYuan"
+                        },
+                        {
+                          "name": "arial",
+                          "value": "arial"
+                        },
+                        {
+                          "name": "sans-serif",
+                          "value": "sans-serif"
+                        }
+                      ],
+                      "default": "Microsoft Yahei"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "animation": {
+        "name": "动画",
+        "type": "boolean",
+        "default": true
+      },
+      "animationThreshold": {
+        "name": "动画阈值",
+        "type": "number",
+        "default": 2000
+      },
+      "animationDuration": {
+        "name": "动画时长",
+        "type": "number",
+        "default": 1000
+      },
+      "animationEasing": {
+        "name": "缓动效果",
+        "type": "search",
+        "options": [
+          {
+            "name": "linear",
+            "value": "linear"
+          },
+          {
+            "name": "quadraticIn",
+            "value": "quadraticIn"
+          },
+          {
+            "name": "quadraticOut",
+            "value": "quadraticOut"
+          },
+          {
+            "name": "quadraticInOut",
+            "value": "quadraticInOut"
+          },
+          {
+            "name": "cubicIn",
+            "value": "cubicIn"
+          },
+          {
+            "name": "cubicOut",
+            "value": "cubicOut"
+          },
+          {
+            "name": "cubicInOut",
+            "value": "cubicInOut"
+          },
+          {
+            "name": "quarticIn",
+            "value": "quarticIn"
+          },
+          {
+            "name": "quarticOut",
+            "value": "quarticOut"
+          },
+          {
+            "name": "quarticInOut",
+            "value": "quarticInOut"
+          },
+          {
+            "name": "quinticIn",
+            "value": "quinticIn"
+          },
+          {
+            "name": "quinticOut",
+            "value": "quinticOut"
+          },
+          {
+            "name": "quinticInOut",
+            "value": "quinticInOut"
+          },
+          {
+            "name": "sinusoidalIn",
+            "value": "sinusoidalIn"
+          },
+          {
+            "name": "sinusoidalOut",
+            "value": "sinusoidalOut"
+          },
+          {
+            "name": "sinusoidalInOut",
+            "value": "sinusoidalInOut"
+          },
+          {
+            "name": "exponentialIn",
+            "value": "exponentialIn"
+          },
+          {
+            "name": "exponentialOut",
+            "value": "exponentialOut"
+          },
+          {
+            "name": "exponentialInOut",
+            "value": "exponentialInOut"
+          },
+          {
+            "name": "circularIn",
+            "value": "circularIn"
+          },
+          {
+            "name": "circularOut",
+            "value": "circularOut"
+          },
+          {
+            "name": "circularInOut",
+            "value": "circularInOut"
+          },
+          {
+            "name": "elasticIn",
+            "value": "elasticIn"
+          },
+          {
+            "name": "elasticOut",
+            "value": "elasticOut"
+          },
+          {
+            "name": "elasticInOut",
+            "value": "elasticInOut"
+          },
+          {
+            "name": "backIn",
+            "value": "backIn"
+          },
+          {
+            "name": "backOut",
+            "value": "backOut"
+          },
+          {
+            "name": "backInOut",
+            "value": "backInOut"
+          },
+          {
+            "name": "bounceIn",
+            "value": "bounceIn"
+          },
+          {
+            "name": "bounceOut",
+            "value": "bounceOut"
+          },
+          {
+            "name": "bounceInOut",
+            "value": "bounceInOut"
+          }
+        ],
+        "default": "cubicInOut"
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "x": "直接访问",
+          "y": 335
+        },
+        {
+          "x": "邮件营销",
+          "y": 310
+        },
+        {
+          "x": "联盟广告",
+          "y": 234
+        },
+        {
+          "x": "视频广告",
+          "y": 135
+        },
+        {
+          "x": "搜索引擎",
+          "y": 1548
+        }
+      ]
+    }
+  }
+}
