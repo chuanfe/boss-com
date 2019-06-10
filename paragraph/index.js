@@ -18,7 +18,9 @@ class Paragraph {
       overflow: 'hidden'
     });
     this.content = $('<div class="boss-paragraph-container"></div>');
-    const html = (this.data && this.data[0] && this.data[0].value) || content;
+    console.log(this.data);
+    console.log(this.config);
+    const html = (this.data && this.data[0] && this.data[0].value) || this.config.content;
     this.content.html(html);
     const {
       textAlign,

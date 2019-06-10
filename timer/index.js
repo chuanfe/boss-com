@@ -52,9 +52,8 @@ class RealTTime {
       fontSize,
       fontWeight,
       fontFamily,
-      color,
-      backgroungColor
-    } = this.config.time.textStyle;
+      color
+    } = this.config.textStyle;
     this.container.css({
       'display': 'flex',
       'justify-content': textAlign,
@@ -65,19 +64,17 @@ class RealTTime {
       'font-size': fontSize,
       'font-weight': fontWeight,
       'font-family': `"${fontFamily}"`,
-      'color': color,
-      'background-color': backgroungColor
+      'color': color
     });
     this.runTimer();
   }
 
   runTimer() {
     const {
-      format,
-      duration
-    } = this.config.time;
+      format
+    } = this.config;
     this.date.html(farmatDate(format));
-    this.timer = setTimeout(this.runTimer.bind(this), duration);
+    this.timer = setTimeout(this.runTimer.bind(this), 1000);
   }
   resize() {
     this.render(this.data, this.config);

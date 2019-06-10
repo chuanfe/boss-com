@@ -33,7 +33,7 @@
         "description": "支持从数据中获取段落内容，详见数据面板"
       },
       "scroll": {
-        "name": "文本滚动",
+        "name": "动画",
         "type": "group",
         "children": {
           "overScroll": {
@@ -82,10 +82,13 @@
           "fontSize": {
             "type": "number",
             "name": "字号",
-            "min": 10,
-            "default": 16,
-            "max": 100,
-            "step": 1
+            "default": 14,
+            "min": 12,
+            "max": 72,
+            "range": [
+              10,
+              72
+            ]
           },
           "color": {
             "name": "字体颜色",
@@ -157,13 +160,13 @@
     "api_data": {
       "source": [
         {
-          "value": "Boss 多行文本 烽火科技 Boss1 多行文本1 烽火科技1 Boss2 多行文本2 烽火科技2"
+          "value": "Boss 多行文本 这是多行文本内容，多谢您的尝试！多谢您的尝试！这是多行文本内容,多行文本,Boss!"
         }
       ]
     },
     "view": {
       "width": "300",
-      "height": "194",
+      "height": "60",
       "minWidth": "0",
       "minHeight": "0",
       "z-index": 1010

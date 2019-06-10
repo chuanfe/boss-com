@@ -26,6 +26,7 @@
       "source": {
         "handler": "render",
         "description": "接口描述",
+        "hideStatic": true,
         "fields": {
           "url": {
             "type": "string",
@@ -42,45 +43,45 @@
     "config": {
       "imgconfig": {
         "type": "group",
-        "name": "图片设置",
+        "name": "全局",
         "fold": true,
         "children": {
           "fillType": {
-            "type": "select",
+            "type": "radio",
             "name": "填充方式",
-            "options": [
+            "list": [
               {
                 "name": "原始尺寸",
-                "value": "auto"
+                "value": 1
               },
               {
                 "name": "横向铺满容器",
-                "value": "100%"
+                "value": 2
               },
               {
                 "name": "纵向铺满容器",
-                "value": "auto 100%"
+                "value": 3
               },
               {
                 "name": "按比例铺满容器",
-                "value": "cover"
+                "value": 4
               },
               {
                 "name": "拉伸铺满容器",
-                "value": "100% 100%"
+                "value": 5
               }
             ],
-            "default": "100% 100%"
+            "default": 5
           },
-          "opacity": {
-            "type": "number",
-            "name": "透明度",
-            "default": 1,
-            "range": [
-              0,
-              1
-            ],
-            "step": 0.1
+          "dot": {
+            "name": "显示底部导航",
+            "type": "boolean",
+            "default": true
+          },
+          "pagination": {
+            "name": "显示翻页按钮",
+            "type": "boolean",
+            "default": true
           }
         }
       },
@@ -141,6 +142,17 @@
             ],
             "handler": "updateDescription"
           },
+          "fontSize": {
+            "type": "number",
+            "name": "字号",
+            "default": 14,
+            "min": 12,
+            "max": 72,
+            "range": [
+              10,
+              72
+            ]
+          },
           "color": {
             "type": "color",
             "default": "#ffffff",
@@ -154,17 +166,7 @@
             ],
             "handler": "updateDescription"
           },
-          "fontSize": {
-            "type": "number",
-            "name": "字号",
-            "default": 14,
-            "min": 12,
-            "max": 100,
-            "range": [
-              10,
-              100
-            ]
-          },
+         
           "fontWeight": {
             "name": "字体粗细",
             "type": "select",
@@ -245,43 +247,58 @@
           }
         }
       },
-      "dot": {
-        "handler": "updateDot",
-        "type": "group",
-        "name": "圆点",
+      "series": {
         "fold": true,
-        "children": {
-          "show": {
-            "type": "boolean",
-            "default": true,
-            "name": "显示",
-            "handler": "updateDot"
+        "type": "array",
+        "name": "图片系列",
+        "default": [
+          {
+            "imgDesc": "这是第一张图片的描述",
+            "imgUrl": {
+              "value": "#00baff",
+              "style": "image"
+            },
+            "imgLink": "link1"
           },
-          "color": {
-            "type": "color",
-            "default": "#ffffff",
-            "name": "圆点颜色",
-            "show": [
-              [
-                "show",
-                "$eq",
-                true
-              ]
-            ],
-            "handler": "updateDot"
+          {
+            "imgDesc": "这是第二张图片的描述",
+            "imgUrl": {
+              "value": "#3de7c9",
+              "style": "image"
+            },
+            "imgLink": "link2"
           },
-          "current": {
-            "type": "color",
-            "default": "#70b075",
-            "name": "当前颜色",
-            "show": [
-              [
-                "show",
-                "$eq",
-                true
-              ]
-            ],
-            "handler": "updateDot"
+          {
+            "imgDesc": "这是第三张图片的描述",
+            "imgUrl": {
+              "value": "#ffffff",
+              "style": "image"
+            },
+            "imgLink": "link3"
+          }
+        ],
+        "child": {
+          "type": "object",
+          "name": "系列<%= i+1 %>",
+          "child": {
+            "imgDesc": {
+              "name": "系列名",
+              "type": "text",
+              "default": ""
+            },
+            "imgUrl": {
+              "name": "图片",
+              "type": "image",
+              "default": {
+                "style": "single",
+                "value": ""
+              }
+            },
+            "imgLink": {
+              "name": "图片超链接",
+              "type": "text",
+              "default": ""
+            }
           }
         }
       }
