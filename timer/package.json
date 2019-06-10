@@ -1,0 +1,170 @@
+{
+  "name": "@namespace/timer",
+  "version": "0.0.1",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "时间器",
+    "level": 0,
+    "icon": "http://localhost:6721/resource/imgs/TB1Nxi8JpOWBuNjy0FiXXXFxVXa-270-160.png",
+    "protocol": 2,
+    "type": [
+      "text_label"
+    ],
+    "view": {
+      "width": "300",
+      "height": "50",
+      "minWidth": "160",
+      "minHeight": "30",
+      "z-index": 110
+    },
+    "apis": {},
+    "config": {
+      "time": {
+        "type": "group",
+        "name": "时间器",
+        "children": {
+          "textStyle": {
+            "type": "group",
+            "name": "文本样式",
+            "fold": true,
+            "children": {
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 18,
+                "range": [
+                  10,
+                  100
+                ]
+              },
+              "color": {
+                "type": "color",
+                "name": "字体颜色",
+                "default": "#FFFFFF"
+              },
+              "backgroungColor": {
+                "type": "color",
+                "name": "背景颜色",
+                "default": "rgba(255, 255, 255, 0)"
+              },
+              "fontWeight": {
+                "name": "字体粗细",
+                "type": "search",
+                "default": "normal",
+                "searches": [
+                  "normal",
+                  "bold",
+                  "bolder",
+                  "lighter",
+                  100,
+                  200,
+                  300,
+                  400,
+                  500,
+                  600,
+                  700,
+                  800,
+                  900
+                ]
+              },
+              "fontFamily": {
+                "name": "字体",
+                "type": "search",
+                "default": "Microsoft Yahei",
+                "range": [
+                  {
+                    "微软雅黑": "Microsoft Yahei"
+                  },
+                  {
+                    "宋体": "SimSun"
+                  },
+                  {
+                    "黑体": "SimHei"
+                  },
+                  {
+                    "隶书": "LiSu"
+                  },
+                  {
+                    "幼圆": "YouYuan"
+                  },
+                  "tahoma",
+                  "arial",
+                  "sans-serif"
+                ],
+                "description": "请选择您系统有的字体,如果您系统无此字体,标题将会显示默认字体"
+              },
+              "textAlign": {
+                "name": "对齐方式",
+                "type": "options",
+                "options": [
+                  {
+                    "name": "左对齐",
+                    "value": "flex-start"
+                  },
+                  {
+                    "name": "右对齐",
+                    "value": "flex-end"
+                  },
+                  {
+                    "name": "居中对齐",
+                    "value": "center"
+                  }
+                ],
+                "default": "center"
+              }
+            }
+          },
+          "format": {
+            "type": "search",
+            "name": "时间格式",
+            "default": "yyyy-MM-dd HH:mm:ss",
+            "range": [
+              {
+                "日期": "yyyy-MM-dd"
+              },
+              {
+                "日期+时分": "yyyy-MM-dd HH:mm"
+              },
+              {
+                "日期+时分秒": "yyyy-MM-dd HH:mm:ss"
+              }
+            ],
+            "description": "如：hh:mm:ss为12小时制的格式"
+          },
+          "duration": {
+            "type": "number",
+            "name": "时间刷新间隔(ms)",
+            "default": 1000
+          }
+        }
+      },
+      "event": {
+        "name": "回调配置",
+        "type": "group",
+        "children": {
+          "interval": {
+            "name": "回调抛出间隔(ms)",
+            "type": "number",
+            "default": 3000,
+            "min": 500
+          }
+        }
+      }
+    },
+    "api_data": {},
+    "events": {
+      "time-changed": {
+        "description": "当前时间变化响应事件",
+        "fields": {
+          "time": {
+            "description": "当前时间"
+          }
+        }
+      }
+    }
+  }
+}

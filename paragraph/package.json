@@ -1,0 +1,173 @@
+{
+  "name": "@namespace/paragraph",
+  "version": "0.0.1",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "多行文本",
+    "level": 0,
+    "protocol": 2,
+    "type": [
+      "text_label"
+    ],
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "段落内容接口,可以无(从配置读取)",
+        "fields": {
+          "value": {
+            "description": "段落内容",
+            "optional": true
+          }
+        }
+      }
+    },
+    "config": {
+      "content": {
+        "type": "text",
+        "name": "段落内容",
+        "default": "",
+        "description": "支持从数据中获取段落内容，详见数据面板"
+      },
+      "scroll": {
+        "name": "文本滚动",
+        "type": "group",
+        "children": {
+          "overScroll": {
+            "name": "溢出滚动",
+            "type": "boolean",
+            "default": false,
+            "description": "仅当文本溢出时有效"
+          },
+          "duration": {
+            "name": "滚动持续时间",
+            "type": "number",
+            "default": 5000
+          }
+        }
+      },
+      "textStyle": {
+        "type": "group",
+        "name": "文本样式",
+        "children": {
+          "fontFamily": {
+            "name": "字体",
+            "type": "search",
+            "default": "Microsoft Yahei",
+            "range": [
+              {
+                "微软雅黑": "Microsoft Yahei"
+              },
+              {
+                "宋体": "SimSun"
+              },
+              {
+                "黑体": "SimHei"
+              },
+              {
+                "隶书": "LiSu"
+              },
+              {
+                "幼圆": "YouYuan"
+              },
+              "tahoma",
+              "arial",
+              "sans-serif"
+            ],
+            "description": "请选择您系统有的字体,如果您系统无此字体,标题将会显示默认字体"
+          },
+          "fontSize": {
+            "type": "number",
+            "name": "字号",
+            "min": 10,
+            "default": 16,
+            "max": 100,
+            "step": 1
+          },
+          "color": {
+            "name": "字体颜色",
+            "type": "color",
+            "default": "#fff"
+          },
+          "fontWeight": {
+            "name": "字体粗细",
+            "type": "search",
+            "default": "lighter",
+            "searches": [
+              "normal",
+              "bold",
+              "bolder",
+              "lighter",
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900
+            ]
+          }
+        }
+      },
+      "lineHeight": {
+        "type": "number",
+        "name": "行高",
+        "default": 36,
+        "range": [
+          0,
+          100
+        ],
+        "step": 1
+      },
+      "textAlign": {
+        "name": "对齐方式",
+        "type": "options",
+        "options": [
+          {
+            "name": "左对齐",
+            "value": "left"
+          },
+          {
+            "name": "右对齐",
+            "value": "right"
+          },
+          {
+            "name": "居中对齐",
+            "value": "center"
+          }
+        ],
+        "default": "left"
+      },
+      "textIndent": {
+        "type": "number",
+        "name": "首行缩进",
+        "range": [
+          0,
+          100
+        ],
+        "step": 1,
+        "default": 32
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "value": "Boss 多行文本 烽火科技 Boss1 多行文本1 烽火科技1 Boss2 多行文本2 烽火科技2"
+        }
+      ]
+    },
+    "view": {
+      "width": "300",
+      "height": "194",
+      "minWidth": "0",
+      "minHeight": "0",
+      "z-index": 1010
+    },
+    "icon": "http://localhost:6721/resource/imgs/TB1Rtq4JuSSBuNjy0FlXXbBpVXa-270-160.png"
+  }
+}

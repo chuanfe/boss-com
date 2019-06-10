@@ -1,0 +1,119 @@
+{
+  "name": "@namespace/progressHBar",
+  "version": "0.0.1",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "水平进度条",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "400",
+      "height": "200",
+      "minWidth": "200",
+      "minHeight": "100"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "接口描述",
+        "fields": {
+          "value": {
+            "description": "进度百分比"
+          }
+        }
+      }
+    },
+    "config": {
+      "fineness": {
+        "name": "进度条粗细",
+        "type": "number",
+        "default": 20
+      },
+      "borderRadius": {
+        "name": "进度条圆角",
+        "type": "number",
+        "default": 10
+      },
+      "thumbBg": {
+        "name": "进度色值",
+        "type": "multicolor",
+        "default": {
+          "style": "single",
+          "value": "rgba(36,203,255,1)"
+        }
+      },
+      "trackBg": {
+        "name": "轨道色值",
+        "type": "color",
+        "default": "rgba(255,255,255,.1)"
+      },
+      "tip": {
+        "name": "提示文字",
+        "type": "group",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": true
+          },
+          "tipColor": {
+            "name": "提示文字色值",
+            "type": "color",
+            "default": "rgb(115, 170, 229)"
+          },
+          "tipFontSize": {
+            "name": "提示文字字号",
+            "type": "number",
+            "default": 24
+          },
+          "tipFontWeight": {
+            "name": "文字粗细",
+            "type": "select",
+            "options": [
+              {
+                "name": "lighter",
+                "value": "lighter"
+              },
+              {
+                "name": "normal",
+                "value": "normal"
+              },
+              {
+                "name": "bold",
+                "value": "bold"
+              },
+              {
+                "name": "bolder",
+                "value": "bolder"
+              }
+            ],
+            "default": "bold"
+          },
+          "tipFix": {
+            "name": "小数位数",
+            "type": "number",
+            "default": 0
+          },
+          "showRealValue": {
+            "name": "显示真实值",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "api_data": {
+      "source": {
+        "value": 23.1111111,
+        "total": 100
+      }
+    }
+  }
+}
