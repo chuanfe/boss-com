@@ -1,12 +1,12 @@
 {
-  "name": "@namespace/progressbar-h",
+  "name": "@namespace/progressbar-r",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "2.1.4",
     "lodash": "4.6.1"
   },
   "datav": {
-    "cn_name": "水平进度条",
+    "cn_name": "环形进度条",
     "icon": "",
     "protocol": 2,
     "type": [
@@ -14,7 +14,7 @@
     ],
     "view": {
       "width": "400",
-      "height": "200",
+      "height": "300",
       "minWidth": "200",
       "minHeight": "100"
     },
@@ -36,20 +36,12 @@
       "fineness": {
         "name": "进度条粗细",
         "type": "number",
-        "default": 10
-      },
-      "borderRadius": {
-        "name": "进度条圆角",
-        "type": "number",
-        "default": 10
+        "default": 20
       },
       "thumbBg": {
         "name": "进度条色值",
-        "type": "multicolor",
-        "default": {
-          "style": "single",
-          "value": "rgba(36,203,255,1)"
-        }
+        "type": "color",
+        "default": "rgba(36,203,255,1)"
       },
       "trackBg": {
         "name": "轨道色值",
@@ -93,7 +85,7 @@
           "fontSize": {
             "name": "字号",
             "type": "number",
-            "default": 24
+            "default": 36
           },
           "color": {
             "name": "字体颜色",
