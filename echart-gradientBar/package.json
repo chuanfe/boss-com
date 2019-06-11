@@ -1,5 +1,5 @@
 {
-  "name": "echart_circle_bar",
+  "name": "echart_gradientBar",
   "version": "1.2.5",
   "dependencies": {
     "bcore": "0.0.18",
@@ -10,10 +10,10 @@
   },
   "datav": {
     "cnName": "柱状图",
-    "enName": "echart_circle_bar",
+    "enName": "echart_gradientBar",
     "icon": "//img.alicdn.com/tfs/TB1SRZMJY9YBuNjy0FgXXcxcXXa-270-160.png",
     "protocol": 2,
-    "type": "echart_circle_bar",
+    "type": "echart_gradientBar",
     "view": {
       "width": "600",
       "height": "200",
@@ -25,7 +25,7 @@
     "apis": {
       "source": {
         "handler": "render",
-        "description": "echart_circle_bar",
+        "description": "echart_gradientBar",
         "fields": {
           "x": {
             "description": "x坐标轴值"
@@ -171,7 +171,7 @@
           "top": {
             "name": "顶部",
             "type": "text",
-            "default": "15%"
+            "default": "20%"
           },
           "right": {
             "name": "右侧",
@@ -181,12 +181,7 @@
           "bottom": {
             "name": "底部",
             "type": "text",
-            "default": "15%"
-          },
-          "containLabel": {
-            "name": "包含坐标轴",
-            "type": "boolean",
-            "default": true
+            "default": "25%"
           }
         }
       },
@@ -207,6 +202,94 @@
               100
             ],
             "default": 5
+          },
+          "boundaryGap": {
+            "name": "两边留白",
+            "type": "boolean",
+            "default": true
+          },
+          "axisLine": {
+            "name": "轴线",
+            "type": "group",
+            "children": {
+              "show": {
+                "name": "显示",
+                "type": "boolean",
+                "default": true
+              },
+              "lineStyleColor": {
+                "name": "颜色",
+                "type": "color",
+                "default": "rgba(255,255,255,.8)"
+              }
+            }
+          },
+          "axisTick": {
+            "name": "刻度",
+            "type": "group",
+            "children": {
+              "show": {
+                "name": "显示",
+                "type": "boolean",
+                "default": true
+              },
+              "interval": {
+                "name": "分割间隔",
+                "type": "number",
+                "default": 0
+              }
+            }
+          },
+          "axisLabel": {
+            "name": "刻度标签",
+            "type": "group",
+            "children": {
+              "show": {
+                "name": "显示",
+                "type": "boolean",
+                "default": true
+              },
+              "interval": {
+                "name": "分割间隔",
+                "type": "number",
+                "default": 0
+              },
+              "rotate": {
+                "name": "旋转",
+                "type": "number",
+                "default": 0
+              },
+              "color": {
+                "name": "颜色",
+                "type": "color",
+                "default": "rgba(255,255,255,.8)"
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 12
+              }
+            }
+          }
+        }
+      },
+      "yAxis": {
+        "name": "y轴",
+        "type": "group",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": true
+          },
+          "offset": {
+            "name": "偏移",
+            "type": "number",
+            "range": [
+              -100,
+              100
+            ],
+            "default": 0
           },
           "min": {
             "name": "最小值",
@@ -324,94 +407,6 @@
           }
         }
       },
-      "yAxis": {
-        "name": "y轴",
-        "type": "group",
-        "children": {
-          "show": {
-            "name": "显示",
-            "type": "boolean",
-            "default": true
-          },
-          "offset": {
-            "name": "偏移",
-            "type": "number",
-            "range": [
-              -100,
-              100
-            ],
-            "default": 5
-          },
-          "boundaryGap": {
-            "name": "两边留白",
-            "type": "boolean",
-            "default": true
-          },
-          "axisLine": {
-            "name": "轴线",
-            "type": "group",
-            "children": {
-              "show": {
-                "name": "显示",
-                "type": "boolean",
-                "default": true
-              },
-              "lineStyleColor": {
-                "name": "颜色",
-                "type": "color",
-                "default": "rgba(255,255,255,.8)"
-              }
-            }
-          },
-          "axisTick": {
-            "name": "刻度",
-            "type": "group",
-            "children": {
-              "show": {
-                "name": "显示",
-                "type": "boolean",
-                "default": true
-              },
-              "interval": {
-                "name": "分割间隔",
-                "type": "number",
-                "default": 0
-              }
-            }
-          },
-          "axisLabel": {
-            "name": "刻度标签",
-            "type": "group",
-            "children": {
-              "show": {
-                "name": "显示",
-                "type": "boolean",
-                "default": true
-              },
-              "interval": {
-                "name": "分割间隔",
-                "type": "number",
-                "default": 0
-              },
-              "rotate": {
-                "name": "旋转",
-                "type": "number",
-                "default": 0
-              },
-              "color": {
-                "name": "颜色",
-                "type": "color",
-                "default": "rgba(255,255,255,.8)"
-              },
-              "fontSize": {
-                "name": "字号",
-                "type": "number",
-                "default": 12
-              }
-            }
-          }
-        }
-      },
       "legend": {
         "name": "图例",
         "type": "group",
@@ -438,7 +433,7 @@
                 "value": "right"
               }
             ],
-            "default": "center"
+            "default": "left"
           },
           "top": {
             "name": "上下位置",
@@ -457,7 +452,7 @@
                 "value": "bottom"
               }
             ],
-            "default": "top"
+            "default": "middle"
           },
           "orient": {
             "name": "列表朝向",
@@ -472,7 +467,7 @@
                 "value": "vertical"
               }
             ],
-            "default": "horizontal"
+            "default": "vertical"
           },
           "textStyle": {
             "name": "文本样式",
@@ -556,18 +551,30 @@
               "fontSize": 12
             },
             "itemStyle": {
-              "color": "#40A9FF",
+              "color": {
+                "style": "double",
+                "value": "#00c2ff",
+                "from": "#820014",
+                "to": "#d48806",
+                "angle": 90
+              },
               "barBorderRadius": 0
             },
             "emphasis": {
               "label": {
                 "show": false,
-                "color": "#000",
+                "color": "#fff",
                 "fontSize": 12
               },
               "itemStyle": {
                 "show": true,
-                "color": "#1890FF"
+                "color": {
+                  "style": "double",
+                  "value": "#d48806",
+                  "from": "#820014",
+                  "to": "#00c2ff",
+                  "angle": 90
+                }
               }
             },
             "barWidth": "auto",
@@ -611,8 +618,11 @@
               "children": {
                 "color": {
                   "name": "颜色",
-                  "type": "color",
-                  "default": "#1890FF"
+                  "type": "multicolor",
+                  "default": {
+                    "style": "single",
+                    "value": "rgba(50,50,50,0.7)"
+                  }
                 },
                 "barBorderRadius": {
                   "name": "柱圆角",
@@ -642,7 +652,7 @@
                     "color": {
                       "name": "颜色",
                       "type": "color",
-                      "default": "#1890FF"
+                      "default": "#000"
                     }
                   }
                 },
@@ -657,8 +667,11 @@
                     },
                     "color": {
                       "name": "颜色",
-                      "type": "color",
-                      "value": "#1890FF"
+                      "type": "multicolor",
+                      "default": {
+                        "style": "single",
+                        "value": "rgba(50,50,50,0.7)"
+                      }
                     }
                   }
                 }
@@ -791,9 +804,19 @@
           "s": "bar"
         },
         {
+          "x": "类目0",
+          "y": 30,
+          "s": "bar2"
+        },
+        {
           "x": "类目1",
-          "y": 50,
+          "y": 20,
           "s": "bar"
+        },
+        {
+          "x": "类目1",
+          "y": 105,
+          "s": "bar2"
         },
         {
           "x": "类目2",
@@ -801,9 +824,19 @@
           "s": "bar"
         },
         {
+          "x": "类目2",
+          "y": 180,
+          "s": "bar2"
+        },
+        {
           "x": "类目3",
           "y": 110,
           "s": "bar"
+        },
+        {
+          "x": "类目3",
+          "y": 20,
+          "s": "bar2"
         },
         {
           "x": "类目4",
@@ -811,9 +844,19 @@
           "s": "bar"
         },
         {
+          "x": "类目4",
+          "y": 90,
+          "s": "bar2"
+        },
+        {
           "x": "类目5",
           "y": 30,
           "s": "bar"
+        },
+        {
+          "x": "类目5",
+          "y": 80,
+          "s": "bar2"
         },
         {
           "x": "类目6",
@@ -821,9 +864,19 @@
           "s": "bar"
         },
         {
+          "x": "类目6",
+          "y": 30,
+          "s": "bar2"
+        },
+        {
           "x": "类目7",
           "y": 120,
           "s": "bar"
+        },
+        {
+          "x": "类目7",
+          "y": 12,
+          "s": "bar2"
         }
       ]
     }
