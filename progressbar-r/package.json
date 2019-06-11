@@ -1,0 +1,138 @@
+{
+  "name": "@namespace/progressbar-r",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "环形进度条",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "400",
+      "height": "300",
+      "minWidth": "200",
+      "minHeight": "100"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "接口描述",
+        "fields": {
+          "value": {
+            "description": "值"
+          },
+          "total": {
+            "description": "总数"
+          }
+        }
+      }
+    },
+    "config": {
+      "fineness": {
+        "name": "进度条粗细",
+        "type": "number",
+        "default": 20
+      },
+      "thumbBg": {
+        "name": "进度条色值",
+        "type": "color",
+        "default": "rgba(36,203,255,1)"
+      },
+      "trackBg": {
+        "name": "轨道色值",
+        "type": "color",
+        "default": "rgba(255,255,255,.1)"
+      },
+      "tip": {
+        "name": "提示文字",
+        "type": "group",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": true
+          },
+          "fontFamily": {
+            "name": "字体",
+            "type": "search",
+            "range": [
+              {
+                "微软雅黑": "Microsoft Yahei"
+              },
+              {
+                "宋体": "SimSun"
+              },
+              {
+                "黑体": "SimHei"
+              },
+              {
+                "隶书": "LiSu"
+              },
+              {
+                "幼圆": "YouYuan"
+              },
+              "tahoma",
+              "arial",
+              "sans-serif"
+            ],
+            "default": "Microsoft Yahei"
+          },
+          "fontSize": {
+            "name": "字号",
+            "type": "number",
+            "default": 36
+          },
+          "color": {
+            "name": "字体颜色",
+            "type": "color",
+            "default": "rgb(115, 170, 229)"
+          },
+          "fontWeight": {
+            "name": "字体粗细",
+            "type": "search",
+            "searches": [
+              "normal",
+              "bold",
+              "bolder",
+              "lighter",
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900
+            ],
+            "default": "normal"
+          },
+          "fixed": {
+            "name": "小数位数",
+            "type": "number",
+            "min": 0,
+            "default": 0
+          },
+          "isRealValue": {
+            "name": "显示真实值",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "value": 23.1111111,
+          "total": 100
+        }
+      ]
+    }
+  }
+}

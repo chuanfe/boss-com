@@ -23,124 +23,111 @@
     },
     "apis": {},
     "config": {
-      "time": {
+      "textStyle": {
         "type": "group",
-        "name": "时间器",
+        "name": "文本样式",
+        "fold": true,
         "children": {
-          "textStyle": {
-            "type": "group",
-            "name": "文本样式",
-            "fold": true,
-            "children": {
-              "fontSize": {
-                "name": "字号",
-                "type": "number",
-                "default": 18,
-                "range": [
-                  10,
-                  100
-                ]
-              },
-              "color": {
-                "type": "color",
-                "name": "字体颜色",
-                "default": "#FFFFFF"
-              },
-              "backgroungColor": {
-                "type": "color",
-                "name": "背景颜色",
-                "default": "rgba(255, 255, 255, 0)"
-              },
-              "fontWeight": {
-                "name": "字体粗细",
-                "type": "search",
-                "default": "normal",
-                "searches": [
-                  "normal",
-                  "bold",
-                  "bolder",
-                  "lighter",
-                  100,
-                  200,
-                  300,
-                  400,
-                  500,
-                  600,
-                  700,
-                  800,
-                  900
-                ]
-              },
-              "fontFamily": {
-                "name": "字体",
-                "type": "search",
-                "default": "Microsoft Yahei",
-                "range": [
-                  {
-                    "微软雅黑": "Microsoft Yahei"
-                  },
-                  {
-                    "宋体": "SimSun"
-                  },
-                  {
-                    "黑体": "SimHei"
-                  },
-                  {
-                    "隶书": "LiSu"
-                  },
-                  {
-                    "幼圆": "YouYuan"
-                  },
-                  "tahoma",
-                  "arial",
-                  "sans-serif"
-                ],
-                "description": "请选择您系统有的字体,如果您系统无此字体,标题将会显示默认字体"
-              },
-              "textAlign": {
-                "name": "对齐方式",
-                "type": "options",
-                "options": [
-                  {
-                    "name": "左对齐",
-                    "value": "flex-start"
-                  },
-                  {
-                    "name": "右对齐",
-                    "value": "flex-end"
-                  },
-                  {
-                    "name": "居中对齐",
-                    "value": "center"
-                  }
-                ],
-                "default": "center"
-              }
-            }
-          },
-          "format": {
+          "fontFamily": {
+            "name": "字体",
             "type": "search",
-            "name": "时间格式",
-            "default": "yyyy-MM-dd HH:mm:ss",
+            "default": "Microsoft Yahei",
             "range": [
               {
-                "日期": "yyyy-MM-dd"
+                "微软雅黑": "Microsoft Yahei"
               },
               {
-                "日期+时分": "yyyy-MM-dd HH:mm"
+                "宋体": "SimSun"
               },
               {
-                "日期+时分秒": "yyyy-MM-dd HH:mm:ss"
+                "黑体": "SimHei"
+              },
+              {
+                "隶书": "LiSu"
+              },
+              {
+                "幼圆": "YouYuan"
+              },
+              "tahoma",
+              "arial",
+              "sans-serif"
+            ],
+            "description": "请选择您系统有的字体,如果您系统无此字体,标题将会显示默认字体"
+          },
+          "fontSize": {
+            "type": "number",
+            "name": "字号",
+            "default": 18,
+            "min": 12,
+            "max": 72,
+            "range": [
+              10,
+              72
+            ]
+          },
+          "color": {
+            "type": "color",
+            "name": "字体颜色",
+            "default": "#FFFFFF"
+          },
+          "fontWeight": {
+            "name": "字体粗细",
+            "type": "search",
+            "default": "normal",
+            "searches": [
+              "normal",
+              "bold",
+              "bolder",
+              "lighter",
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900
+            ]
+          },
+         
+          "textAlign": {
+            "name": "对齐方式",
+            "type": "options",
+            "options": [
+              {
+                "name": "左对齐",
+                "value": "flex-start"
+              },
+              {
+                "name": "右对齐",
+                "value": "flex-end"
+              },
+              {
+                "name": "居中对齐",
+                "value": "center"
               }
             ],
-            "description": "如：hh:mm:ss为12小时制的格式"
-          },
-          "duration": {
-            "type": "number",
-            "name": "时间刷新间隔(ms)",
-            "default": 1000
+            "default": "center"
           }
         }
+      },
+      "format": {
+        "type": "search",
+        "name": "时间格式",
+        "default": "yyyy-MM-dd HH:mm:ss",
+        "range": [
+          {
+            "日期": "yyyy-MM-dd"
+          },
+          {
+            "日期+时分": "yyyy-MM-dd HH:mm"
+          },
+          {
+            "日期+时分秒": "yyyy-MM-dd HH:mm:ss"
+          }
+        ],
+        "description": "如：hh:mm:ss为12小时制的格式"
       },
       "event": {
         "name": "回调配置",

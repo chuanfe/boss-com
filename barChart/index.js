@@ -1,25 +1,24 @@
-var Event = require('bcore/event');
-var $ = require('jquery');
-var _ = require('lodash');
-var EChart = require('echarts');
-var Utils = require('datav:/com/maliang-echarts-utils/0.0.18');
+const Event = require('bcore/event');
+const $ = require('jquery');
+const _ = require('lodash');
+const EChart = require('echarts');
+const Utils = require('datav:/com/maliang-echarts-utils/0.0.18');
 
 /**
  * 马良基础类
  */
-module.exports = Event.extend(
-  function Base(container, config) {
-  this.config = {series:[], yAxis: {data: [], type: 'value'}, xAxis: {data: [], type: 'category'}};
-  this.container = $(container);           //容器
-  this.apis = config.apis;                 //hook一定要有
-  this._data = null;                       //数据
-  this.chart = null;                       //图表
+module.exports = Event.extend(function Base(container, config) {
+  this.config = { series: [], yAxis: { data: [], type: 'value' }, xAxis: { data: [], type: 'category' } };
+  this.container = $(container); // 容器
+  this.apis = config.apis; // hook一定要有
+  this._data = null; // 数据
+  this.chart = null; // 图表
   this.init(config);
 }, {
-  /**                                                                                 
+  /**
    * 公有初始化
    */
-  init: function (config) {
+  init(config) {
     config = this.mergeConfig(config);
     this.chart = EChart.init(this.container[0]);
     this.chart.setOption(Utils.config2echartsOptions(config));
@@ -30,11 +29,11 @@ module.exports = Event.extend(
    * @param options 不一定有
    * !!注意: 第二个参数支持config, 就不需要updateOptions这个方法了
    */
-  render: function (data, config) {
+  render(data, config) {
     config = this.mergeConfig(config);
     data = this.data(data);
     console.log(data);
-    var cfg = Utils.config2echartsOptions(this.mergeConfig(Utils.data2echartsAxis(data, config)));
+    const cfg = Utils.config2echartsOptions(this.mergeConfig(Utils.data2echartsAxis(data, config)));
     console.log(cfg);
     this.chart.setOption(cfg);
   },
@@ -43,18 +42,18 @@ module.exports = Event.extend(
    * @param width
    * @param height
    */
-  resize: function (width, height) {
+  resize(width, height) {
     this.chart.resize({
-      width: width,
-      height: height
-    })
+      width,
+      height
+    });
   },
   /**
    * 数据,设置和获取数据
    * @param data
    * @returns {*|number}
    */
-  data: function (data) {
+  data(data) {
     if (data) {
       this._data = data;
     }
@@ -67,8 +66,8 @@ module.exports = Event.extend(
    * @param config
    * @private
    */
-  mergeConfig: function (config) {
-    if (!config) { return this.config }
+  mergeConfig(config) {
+    if (!config) { return this.config; }
     if (config.xAxis && config.xAxis.axisLine) {
       config.xAxis.name = config.xAxis.tName;
       config.xAxis.axisLine.lineStyle = {};
@@ -96,52 +95,52 @@ module.exports = Event.extend(
       // config.yAxis.axisPointer.lineStyle.type = config.yAxis.axisPointer.lineStyle.sType;
     }
     if (config.legend && config.legend.selectedPostion) {
-      config.textStyle
+      config.textStyle;
       switch (config.legend.selectedPostion) {
-        case "topCenter":
-          config.legend.left = "center";
-          config.legend.top = "top";
-          config.legend.orient="horizontal";
+        case 'topCenter':
+          config.legend.left = 'center';
+          config.legend.top = 'top';
+          config.legend.orient = 'horizontal';
           break;
-        case "topLeft":
-          config.legend.left = "left";
-          config.legend.top = "top";
-          config.legend.orient="horizontal";
+        case 'topLeft':
+          config.legend.left = 'left';
+          config.legend.top = 'top';
+          config.legend.orient = 'horizontal';
           break;
-        case "topRight":
-          config.legend.left = "right";
-          config.legend.top = "top";
-          config.legend.orient="horizontal";
+        case 'topRight':
+          config.legend.left = 'right';
+          config.legend.top = 'top';
+          config.legend.orient = 'horizontal';
           break;
-        case "bottomCenter":
-          config.legend.left = "center";
-          config.legend.top = "bottom";
-          config.legend.orient="horizontal";
+        case 'bottomCenter':
+          config.legend.left = 'center';
+          config.legend.top = 'bottom';
+          config.legend.orient = 'horizontal';
           break;
-        case "bottomLeft":
-          config.legend.left = "left";
-          config.legend.top = "bottom";
-          config.legend.orient="horizontal";
+        case 'bottomLeft':
+          config.legend.left = 'left';
+          config.legend.top = 'bottom';
+          config.legend.orient = 'horizontal';
           break;
-        case "bottomRight":
-          config.legend.left = "right";
-          config.legend.top = "bottom";
-          config.legend.orient="horizontal";
+        case 'bottomRight':
+          config.legend.left = 'right';
+          config.legend.top = 'bottom';
+          config.legend.orient = 'horizontal';
           break;
-        case "rightCenter":
-          config.legend.left = "right";
-          config.legend.top = "middle";
-          config.legend.orient="vertical";
+        case 'rightCenter':
+          config.legend.left = 'right';
+          config.legend.top = 'middle';
+          config.legend.orient = 'vertical';
           break;
-        case "leftCenter":
-          config.legend.left = "left";
-          config.legend.top = "middle"
-          config.legend.orient="vertical";
+        case 'leftCenter':
+          config.legend.left = 'left';
+          config.legend.top = 'middle';
+          config.legend.orient = 'vertical';
           break;
         default:
-          config.legend.left = "center";
-          config.legend.top = "top";
-          config.legend.orient="horizontal";
+          config.legend.left = 'center';
+          config.legend.top = 'top';
+          config.legend.orient = 'horizontal';
       }
     }
     if (config.grid) {
@@ -161,23 +160,23 @@ module.exports = Event.extend(
       this.config.xAxis.data = config.xAxis.data;
     }
     this.config = _.defaultsDeep(config || {}, this.config);
-    this.config.legend.data = _.map(this.config.series, "name");
+    this.config.legend.data = _.map(this.config.series, 'name');
     return this.config;
   },
   /**
    * 更新样式
    * 有些子组件控制不到的,但是需要控制改变的,在这里实现
    */
-  updateStyle: function () {
-    var cfg = this.config;
+  updateStyle() {
+    const cfg = this.config;
   },
-  clear: function () {
+  clear() {
     this.chart && this.chart.clear && this.chart.clear();
   },
   /**
    * 销毁组件
    */
-  destroy: function(){
+  destroy() {
     this.chart && this.chart.dispose && this.chart.dispose();
   }
 });
