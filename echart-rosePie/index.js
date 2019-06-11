@@ -2,8 +2,9 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import EChart from 'echarts';
+import utils from './utils';
 
-class EchartPie {
+class EchartRosePie {
   constructor(container, config) {
     this.config = this.fixConfig(config);
     this.container = $(container);
@@ -24,11 +25,12 @@ class EchartPie {
   }
 
   fixConfig(config) {
+    config = utils.fixConfigToEchart(config);
     if (!config) {
       return;
     }
     const {
-      mainColor,
+      global,
       series,
       ...restconfig
     } = config;
@@ -40,7 +42,6 @@ class EchartPie {
 
     this.config = _.merge(
       {
-        color: _.map(mainColor, m => m.color),
         legend: {
           bottom: 5
         },
@@ -56,6 +57,7 @@ class EchartPie {
       {
         series: [
           {
+            roseType: 'radius',
             center: [center.x || '50%', center.y || '50%'],
             radius: [radius.inner || 0, radius.outer || '75%'],
             ...restSerie
@@ -78,10 +80,10 @@ class EchartPie {
 
     if (series) {
       // 有且只有一个系列
-      series[0].data = _.map(this.data, n => ({
+      series[0].data = _.orderBy(_.map(this.data, n => ({
         name: n.x,
         value: n.y
-      }));
+      })), ['value'], ['asc']);
     }
     return this.data;
   }
@@ -98,4 +100,4 @@ class EchartPie {
   }
 }
 
-module.exports = EchartPie;
+module.exports = EchartRosePie;
