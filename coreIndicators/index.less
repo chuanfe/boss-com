@@ -1,0 +1,106 @@
+
+.core-indicators-wrapper {
+    height: 100%;
+    padding-bottom: 10px;
+    .core-indocators-row {
+        height: 100%;
+        padding-right: 10px;
+        .hbox {
+            display: table;
+            table-layout: fixed;
+            border-spacing: 0;
+            width: 100%;
+            height: 100%;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+            padding-inline-start: 0px;
+            >.col {
+                display: table-cell;
+                vertical-align: middle;
+                height: 100%;
+                float: none;
+                padding-left: 10px;
+                padding-top: 10px;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.core-indicators-wrapper.can-click .summary-item {
+    cursor: pointer
+}
+
+.core-indicators-wrapper.can-click .summary-item:hover h4 {
+    text-decoration: underline;
+    color: #4282a0
+}
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    border-radius: 10px;
+    h4 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 1.1;
+        color: #0498ff;
+    }
+    &.isActive h4 {
+        text-decoration: underline;
+        color: #4282a0;
+    }
+    .desc {
+        margin: 0px 8px;
+    }
+    .desc-name {
+        white-space: normal;
+        font-size: 16px;
+        padding-left: 4px;
+    }
+    .rate-2 {
+        font-size: 12px
+    }
+    .caret {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 2px;
+        vertical-align: middle;
+        border-top: 4px dashed;
+        border-top: 4px solid \9;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        border-top: 6px solid;
+        transition: all .5s;
+    }
+    .caret.rise {
+        transform: rotate(180deg);
+        transform-origin: 50% 40%;
+    }
+    .rl-green {
+        color: #00a65a;
+    }
+    .rl-red {
+        color: #dd4b39;
+    }
+}
+
+.chart-dashboard .summary-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.flip-number-warpper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden
+}

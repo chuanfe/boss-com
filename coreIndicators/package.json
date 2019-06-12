@@ -1,0 +1,148 @@
+{
+  "name": "core-indicator",
+  "version": "1.0.0",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.11",
+    "number-flip": "^1.0.28"
+  },
+  "datav": {
+    "cn_name": "核心指标",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "800",
+      "height": "200",
+      "minWidth": "200",
+      "minHeight": "100"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "接口描述",
+        "fields": {}
+      }
+    },
+    "config": {
+      "cols": {
+        "type": "number",
+        "name": "每行显示个数",
+        "default": 0,
+        "step": 1,
+        "description": "0为都在一行内显示"
+      },
+      "padding": {
+        "type": "number",
+        "name": "卡片间距离",
+        "step": 1,
+        "default": 10
+      },
+      "borderRadius": {
+        "type": "number",
+        "name": "卡片圆角大小",
+        "step": 1,
+        "default": 10
+      },
+      "nameFontSize": {
+        "type": "number",
+        "name": "指标名称字体大小",
+        "default": 16,
+        "step": 1,
+        "range": [
+          12,
+          72
+        ]
+      },
+      "valueFontSize": {
+        "type": "number",
+        "name": "指标取值字体大小",
+        "default": 32,
+        "step": 1,
+        "range": [
+          12,
+          72
+        ]
+      },
+      "rateFontSize": {
+        "type": "number",
+        "name": "变化率字体大小",
+        "default": 14,
+        "step": 1,
+        "range": [
+          12,
+          72
+        ]
+      },
+      "useDefaultTheme": {
+        "type": "boolean",
+        "name": "使用默认主题配色",
+        "default": true
+      },
+      "customTheme": {
+        "type": "array",
+        "name": "自定义卡片主题",
+        "description": "若无则默认使用平台自带主题",
+        "default": [],
+        "child": {
+          "type": "object",
+          "name": "配色项<%= i+1 %>",
+          "child": {
+            "bg": {
+              "name": "背景色",
+              "type": "color",
+              "default": "rgb(36, 203, 255)",
+              "description": ""
+            },
+            "fontColor": {
+              "name": "通用字体色",
+              "type": "color",
+              "default": "#fff",
+              "description": ""
+            },
+            "indicatorRedFontColor": {
+              "name": "指标飘红字体色",
+              "type": "color",
+              "default": "#DD4B39"
+            },
+            "indicatorGreenFontColor": {
+              "name": "指标飘绿字体色",
+              "type": "color",
+              "default": "#00A65A"
+            }
+          }
+        }
+      }
+    },
+    "api_data": {
+      "source": [
+        {
+          "name": "访问量",
+          "desc": "访问量是指页面被访问的次数",
+          "value": 17480134,
+          "rate_level": "green"
+        },
+        {
+          "name": "访问人数",
+          "value": 2249190,
+          "rate": 3.34,
+          "rate_level": "green"
+        },
+        {
+          "name": "周活跃数",
+          "value": 5326784,
+          "rate": -0.34,
+          "rate_level": "red"
+        },
+        {
+          "name": "月活跃数",
+          "value": 7326784,
+          "rate": 0.54
+        }
+      ]
+    }
+  }
+}
