@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "jquery": "2.1.4",
-    "lodash": "4.6.1"
+    "lodash": "^4.17.11"
   },
   "datav": {
     "cn_name": "环形进度条",
@@ -130,7 +130,7 @@
       "source": [
         {
           "value": 23.1111111,
-          "total": 100
+          "total": 13
         }
       ]
     }

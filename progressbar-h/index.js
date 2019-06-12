@@ -97,7 +97,7 @@ class ProgressBarH {
       {
         duration: 600,
         step() {
-          const width = `${(this.property / 100) * ((value / total) * 100)}%`;
+          const width = `${(this.property / 100) * ((value / total) * 100 > 100 ? 100 : (value / total) * 100)}%`;
           const text = `${((this.property / 100) * (isRealValue ? value : (value / total) * 100)).toFixed(fixed)}${isRealValue ? '' : '%'}`;
           barEl.css('width', width);
           textEl.text(text);

@@ -32,11 +32,11 @@
     "config": {
       "global": {
         "type": "group",
-        "name": "全局配置",
+        "name": "全局设置",
         "children": {
           "rowCount": {
             "type": "number",
-            "name": "每页行数",
+            "name": "每页条数",
             "default": 5,
             "step": 1,
             "min": 1,
@@ -145,7 +145,7 @@
       },
       "header": {
         "type": "group",
-        "name": "表头样式",
+        "name": "表头设置",
         "children": {
           "show": {
             "name": "显示/隐藏",
@@ -188,7 +188,7 @@
             "name": "文本样式",
             "children": {
               "textAlign": {
-                "name": "文本对齐",
+                "name": "对齐方式",
                 "type": "select",
                 "default": "left",
                 "options": [
@@ -239,10 +239,10 @@
               },
               "fontSize": {
                 "type": "number",
-                "name": "字号",
+                "name": "字体大小",
                 "range": [
-                  0,
-                  200
+                  12,
+                  72
                 ],
                 "default": 12,
                 "min": 0,
@@ -281,7 +281,7 @@
         }
       },
       "row": {
-        "name": "斑马线配置",
+        "name": "斑马线设置",
         "type": "group",
         "children": {
           "backgroundColor1": {
@@ -436,13 +436,13 @@
             "columnName": {
               "name": "列字段名",
               "type": "string",
-              "default": "series1",
+              "default": "",
               "description": "需要与数据中字段 type 匹配"
             },
             "displayName": {
               "name": "列显示名",
               "type": "string",
-              "default": "类别一",
+              "default": "",
               "description": "表头显示列名称"
             },
             "width": {

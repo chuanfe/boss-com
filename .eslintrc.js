@@ -25,6 +25,7 @@ const eslintrc = {
         SwitchCase: 1
       }
     ],
+    "no-nested-ternary": 0,
     "func-names": 0,
     "no-plusplus": 0,
     "no-console": 0,

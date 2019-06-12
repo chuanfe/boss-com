@@ -1,0 +1,379 @@
+{
+  "name": "number-flip",
+  "version": "1.0.0",
+  "dependencies": {
+    "bcore": "0.0.18",
+    "jquery": "2.1.4",
+    "lodash": "4.6.1"
+  },
+  "datav": {
+    "cn_name": "数字翻牌器",
+    "icon": "",
+    "protocol": 2,
+    "type": [
+      "regular"
+    ],
+    "view": {
+      "width": "800",
+      "height": "200",
+      "minWidth": "200",
+      "minHeight": "100"
+    },
+    "apis": {
+      "source": {
+        "handler": "render",
+        "description": "接口描述",
+        "fields": {}
+      }
+    },
+    "config": {
+      "speed": {
+        "type": "number",
+        "name": "动画速度(ms)",
+        "step": 500,
+        "default": 1000
+      },
+      "hasPct": {
+        "type": "boolean",
+        "name": "显示百分号",
+        "default": false
+      },
+      "symbol": {
+        "type": "boolean",
+        "name": "显示千位分隔符",
+        "default": false
+      },
+      "dot": {
+        "type": "number",
+        "name": "保留小数点位数",
+        "step": 1,
+        "range": [
+          0,
+          32
+        ],
+        "default": 1
+      },
+      "style": {
+        "type": "group",
+        "name": "数字设置",
+        "children": {
+          "fontFamily": {
+            "name": "字体",
+            "type": "search",
+            "options": [
+              {
+                "name": "微软雅黑",
+                "value": "Microsoft YaHei"
+              },
+              {
+                "name": "宋体",
+                "value": "SimSun"
+              },
+              {
+                "name": "黑体",
+                "value": "SimHei"
+              },
+              {
+                "name": "隶书",
+                "value": "LiSu"
+              },
+              {
+                "name": "幼圆",
+                "value": "YouYuan"
+              },
+              {
+                "name": "arial",
+                "value": "arial"
+              },
+              {
+                "name": "sans-serif",
+                "value": "sans-serif"
+              }
+            ],
+            "default": "Microsoft YaHei"
+          },
+          "fontSize": {
+            "name": "字号",
+            "type": "number",
+            "default": 32,
+            "range": [
+              12,
+              72
+            ]
+          },
+          "fontColor": {
+            "name": "颜色",
+            "type": "color",
+            "default": "#fff"
+          },
+          "fontWeight": {
+            "name": "文字粗细",
+            "type": "select",
+            "options": [
+              {
+                "name": "lighter",
+                "value": "lighter"
+              },
+              {
+                "name": "normal",
+                "value": "normal"
+              },
+              {
+                "name": "bold",
+                "value": "bold"
+              },
+              {
+                "name": "bolder",
+                "value": "bolder"
+              }
+            ],
+            "default": "bold"
+          },
+          "fontBg": {
+            "name": "背景",
+            "type": "color",
+            "default": "transparent"
+          },
+          "margin": {
+            "name": "数字间隔",
+            "type": "number",
+            "range": [
+              0,
+              20
+            ],
+            "default": 2
+          }
+        }
+      },
+      "border": {
+        "type": "group",
+        "name": "添加边框",
+        "children": {
+          "show": {
+            "name": "展示",
+            "type": "boolean",
+            "default": false
+          },
+          "builtInBorder": {
+            "type": "select",
+            "name": "选择内置边框",
+            "options": [
+              {
+                "name": "边框1",
+                "value": "border-1"
+              },
+              {
+                "name": "边框2",
+                "value": "border-2"
+              },
+              {
+                "name": "边框3",
+                "value": "border-3"
+              },
+              {
+                "name": "边框3",
+                "value": "border-3"
+              },
+              {
+                "name": "边框4",
+                "value": "border-4"
+              }
+            ],
+            "default": "border-1"
+          }
+        }
+      },
+      "prefix": {
+        "type": "group",
+        "name": "添加前缀",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": false
+          },
+          "text": {
+            "name": "内容",
+            "type": "text",
+            "default": ""
+          },
+          "fontFamily": {
+            "name": "字体",
+            "type": "search",
+            "options": [
+              {
+                "name": "微软雅黑",
+                "value": "Microsoft YaHei"
+              },
+              {
+                "name": "宋体",
+                "value": "SimSun"
+              },
+              {
+                "name": "黑体",
+                "value": "SimHei"
+              },
+              {
+                "name": "隶书",
+                "value": "LiSu"
+              },
+              {
+                "name": "幼圆",
+                "value": "YouYuan"
+              },
+              {
+                "name": "arial",
+                "value": "arial"
+              },
+              {
+                "name": "sans-serif",
+                "value": "sans-serif"
+              }
+            ],
+            "default": "Microsoft YaHei"
+          },
+          "fontSize": {
+            "name": "字号",
+            "type": "number",
+            "default": 32,
+            "range": [
+              12,
+              72
+            ]
+          },
+          "color": {
+            "name": "颜色",
+            "type": "color",
+            "default": "#fff"
+          },
+          "alignSelf": {
+            "name": "位置",
+            "type": "select",
+            "options": [
+              {
+                "name": "顶部",
+                "value": "flex-start"
+              },
+              {
+                "name": "居中",
+                "value": "center"
+              },
+              {
+                "name": "底部",
+                "value": "flex-end"
+              }
+            ],
+            "default": "center"
+          },
+          "marginRight": {
+            "name": "前缀与主体距离",
+            "type": "number",
+            "default": "5",
+            "range": [
+              0,
+              20
+            ]
+          }
+        }
+      },
+      "suffix": {
+        "type": "group",
+        "name": "添加后缀",
+        "children": {
+          "show": {
+            "name": "显示",
+            "type": "boolean",
+            "default": false
+          },
+          "text": {
+            "name": "内容",
+            "type": "text",
+            "default": ""
+          },
+          "fontFamily": {
+            "name": "字体",
+            "type": "search",
+            "options": [
+              {
+                "name": "微软雅黑",
+                "value": "Microsoft YaHei"
+              },
+              {
+                "name": "宋体",
+                "value": "SimSun"
+              },
+              {
+                "name": "黑体",
+                "value": "SimHei"
+              },
+              {
+                "name": "隶书",
+                "value": "LiSu"
+              },
+              {
+                "name": "幼圆",
+                "value": "YouYuan"
+              },
+              {
+                "name": "arial",
+                "value": "arial"
+              },
+              {
+                "name": "sans-serif",
+                "value": "sans-serif"
+              }
+            ],
+            "default": "Microsoft YaHei"
+          },
+          "fontSize": {
+            "name": "字号",
+            "type": "number",
+            "default": 32,
+            "range": [
+              12,
+              72
+            ]
+          },
+          "color": {
+            "name": "颜色",
+            "type": "color",
+            "default": "#fff"
+          },
+          "alignSelf": {
+            "name": "位置",
+            "type": "select",
+            "options": [
+              {
+                "name": "顶部",
+                "value": "flex-start"
+              },
+              {
+                "name": "居中",
+                "value": "center"
+              },
+              {
+                "name": "底部",
+                "value": "flex-end"
+              }
+            ],
+            "default": "center"
+          },
+          "marginLeft": {
+            "name": "后缀与主体距离",
+            "type": "number",
+            "default": "5",
+            "range": [
+              0,
+              20
+            ]
+          }
+        }
+      }
+    },
+    "api_data": {
+      "source": {
+        "value": 1204567.213322
+      }
+    }
+  }
+}

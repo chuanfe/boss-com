@@ -55,10 +55,10 @@ class ProgressBarR {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: ${tipFontSize}px; 
-            font-weight: ${tipFontWeight}; 
+            font-size: ${tipFontSize}px;
+            font-weight: ${tipFontWeight};
             color: ${tipColor};
-            font-family: ${tipFontFamily}; 
+            font-family: ${tipFontFamily};
           ">
             0
           </div>
@@ -78,9 +78,9 @@ class ProgressBarR {
               position: absolute;
               top: 0;
               right: 0;
-              transform: rotate(-135deg); 
-              border-width: ${fineness}px; 
-              border-style: solid; 
+              transform: rotate(-135deg);
+              border-width: ${fineness}px;
+              border-style: solid;
               border-color: ${thumbBg} ${thumbBg} ${trackBg} ${trackBg};">
             </div>
           </div>
@@ -100,9 +100,9 @@ class ProgressBarR {
               position: absolute;
               top: 0;
               left: 0;
-              transform: rotate(-136deg); 
-              border-width: ${fineness}px; 
-              border-style: solid; 
+              transform: rotate(-136deg);
+              border-width: ${fineness}px;
+              border-style: solid;
               border-color: ${trackBg} ${trackBg} ${thumbBg} ${thumbBg};">
             </div>
           </div>
@@ -124,7 +124,7 @@ class ProgressBarR {
     let degree = (value / total) * 360;
     const textEl = this.container.find('.progress-bar-round-tip');
     const rightEl = this.container.find('.circle.right');
-    const leftEl = this.container.find('.circle.right');
+    const leftEl = this.container.find('.circle.left');
     degree > 360 && (degree = 360);
     degree < 0 && (degree = 0);
 
