@@ -28,10 +28,10 @@
         "description": "echart_ringPie",
         "fields": {
           "x": {
-            "description": "name"
+            "description": "类目"
           },
           "y": {
-            "description": "value"
+            "description": "值"
           }
         }
       }
@@ -84,7 +84,7 @@
               "color": {
                 "name": "字体颜色",
                 "type": "color",
-                "default": "#3fb1e3"
+                "default": "#fff"
               },
               "fontSize": {
                 "name": "字号",
@@ -219,12 +219,12 @@
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": "auto"
+                "default": ""
               },
               "fontSize": {
                 "name": "字号",
                 "type": "number",
-                "default": 12
+                "default": ""
               }
             }
           }
@@ -242,7 +242,7 @@
           "backgroundColor": {
             "name": "背景色",
             "type": "color",
-            "default": "rgba(50,50,50,0.7)"
+            "default": "rgba(60,60,60,0.7)"
           },
           "textStyle": {
             "name": "文本样式",
@@ -251,12 +251,12 @@
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": "#fff"
+                "default": ""
               },
               "fontSize": {
                 "name": "字号",
                 "type": "number",
-                "default": 14
+                "default": ""
               }
             }
           }
@@ -270,10 +270,8 @@
             "type": "pie",
             "selectedMode": true,
             "minAngle": 0,
-            "label":{
-              "show":true,
-              "color":"auto",
-              "fontSize":"14"
+            "label": {
+              "show": true
             },
             "center": {
               "x": "50%",
@@ -315,12 +313,12 @@
                 "color": {
                   "name": "颜色",
                   "type": "color",
-                  "default": "auto"
+                  "default": ""
                 },
                 "fontSize": {
                   "name": "字号",
                   "type": "number",
-                  "default": 12
+                  "default": ""
                 }
               }
             },

@@ -88,7 +88,7 @@
               "color": {
                 "name": "字体颜色",
                 "type": "color",
-                "default": "#3fb1e3"
+                "default": "#fff"
               },
               "fontSize": {
                 "name": "字号",
@@ -171,7 +171,7 @@
           "top": {
             "name": "顶部",
             "type": "text",
-            "default": "15%"
+            "default": "20%"
           },
           "right": {
             "name": "右侧",
@@ -181,12 +181,7 @@
           "bottom": {
             "name": "底部",
             "type": "text",
-            "default": "15%"
-          },
-          "containLabel": {
-            "name": "包含坐标轴",
-            "type": "boolean",
-            "default": true
+            "default": "25%"
           }
         }
       },
@@ -206,7 +201,7 @@
               -100,
               100
             ],
-            "default": 5
+            "default": 0
           },
           "min": {
             "name": "最小值",
@@ -240,7 +235,7 @@
               "lineStyleColor": {
                 "name": "颜色",
                 "type": "color",
-                "default": "rgba(255,255,255,.8)"
+                "default": ""
               }
             }
           },
@@ -267,22 +262,17 @@
                 ],
                 "default": 8
               },
-              "textStyle": {
-                "name": "文本样式",
-                "type": "group",
-                "children": {
-                  "color": {
-                    "name": "颜色",
-                    "type": "color",
-                    "default": "rgba(255,255,255,.8)"
-                  },
-                  "fontSize": {
-                    "name": "字号",
-                    "type": "number",
-                    "default": 12
-                  }
-                }
+              "color": {
+                "name": "颜色",
+                "type": "color",
+                "default": ""
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": ""
               }
+
             }
           },
           "splitLine": {
@@ -301,7 +291,7 @@
                   "color": {
                     "name": "颜色",
                     "type": "color",
-                    "default": "#ccc"
+                    "default": ""
                   },
                   "sType": {
                     "name": "类型",
@@ -341,11 +331,6 @@
               100
             ],
             "default": 5
-          },
-          "boundaryGap": {
-            "name": "两边留白",
-            "type": "boolean",
-            "default": true
           },
           "axisLine": {
             "name": "轴线",
@@ -401,12 +386,12 @@
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": "rgba(255,255,255,.8)"
+                "default": ""
               },
               "fontSize": {
                 "name": "字号",
                 "type": "number",
-                "default": 12
+                "default": ""
               }
             }
           }
@@ -481,12 +466,12 @@
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": "auto"
+                "default": ""
               },
               "fontSize": {
                 "name": "字号",
                 "type": "number",
-                "default": 12
+                "default": ""
               }
             }
           }
@@ -523,7 +508,7 @@
           "backgroundColor": {
             "name": "背景色",
             "type": "color",
-            "default": "rgba(50,50,50,0.7)"
+            "default": "rgba(60,60,60,0.8)"
           },
           "textStyle": {
             "name": "文本样式",
@@ -532,12 +517,12 @@
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": "#fff"
+                "default": ""
               },
               "fontSize": {
                 "name": "字号",
                 "type": "number",
-                "default": 12
+                "default": ""
               }
             }
           }
@@ -552,22 +537,18 @@
             "type": "bar",
             "label": {
               "show": false,
-              "color": "#fff",
-              "fontSize": 12
+              "color": "",
+              "fontSize": ""
             },
             "itemStyle": {
-              "color": "#40A9FF",
               "barBorderRadius": 0
             },
             "emphasis": {
               "label": {
-                "show": false,
-                "color": "#000",
-                "fontSize": 12
+                "show": false
               },
               "itemStyle": {
-                "show": true,
-                "color": "#1890FF"
+                "show": false
               }
             },
             "barWidth": "auto",
@@ -596,12 +577,12 @@
                 "fontSize": {
                   "name": "字号",
                   "type": "number",
-                  "default": 12
+                  "default": ""
                 },
                 "color": {
                   "name": "颜色",
                   "type": "color",
-                  "default": "#fff"
+                  "default": ""
                 }
               }
             },
@@ -612,7 +593,7 @@
                 "color": {
                   "name": "颜色",
                   "type": "color",
-                  "default": "#1890FF"
+                  "default": ""
                 },
                 "barBorderRadius": {
                   "name": "柱圆角",
@@ -637,12 +618,12 @@
                     "fontSize": {
                       "name": "字号",
                       "type": "number",
-                      "default": 10
+                      "default": ""
                     },
                     "color": {
                       "name": "颜色",
                       "type": "color",
-                      "default": "#1890FF"
+                      "default": ""
                     }
                   }
                 },
@@ -658,7 +639,7 @@
                     "color": {
                       "name": "颜色",
                       "type": "color",
-                      "value": "#1890FF"
+                      "value": ""
                     }
                   }
                 }

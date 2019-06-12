@@ -55,6 +55,7 @@ class EchartAreaStack {
         yAxis
       }, {
         xAxis: {
+          boundaryGap: false,
           axisLine: {
             lineStyle: {
               color: xAxis.axisLine.lineStyleColor
