@@ -3,6 +3,7 @@ import _ from 'lodash';
 import Swiper from 'swiper';
 import './index.less';
 import 'swiper/dist/css/swiper.css';
+
 class SwiperImg {
   constructor(container, config) {
     this.container = $(container);
@@ -90,7 +91,7 @@ class SwiperImg {
       loop: true,
       pagination: {
         el: '.swiper-pagination',
-        clickable: true,
+        clickable: true
       },
       navigation: {
         nextEl: '.swiper-button-next',
@@ -98,18 +99,16 @@ class SwiperImg {
       },
       autoplay: {
         delay: `${this.config.animate.interval}`,
-        disableOnInteraction: false,
+        disableOnInteraction: false
       },
       speed: this.config.animate.speed
     });
 
-    // 小圆点位置 
     if (this.config.description.horpos !== 'top') {
       $('.swiper-pagination').css({
         bottom: 'calc(100% - 20px)'
-      })
+      });
     }
-
   }
   resize(_width, _height) {
     this.config.width = _width;
@@ -123,8 +122,3 @@ class SwiperImg {
 }
 
 module.exports = SwiperImg;
-
-
-
-
-

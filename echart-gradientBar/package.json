@@ -1,5 +1,5 @@
 {
-  "name": "echart_stacked",
+  "name": "echart_gradientBar",
   "version": "1.2.5",
   "dependencies": {
     "bcore": "0.0.18",
@@ -9,11 +9,11 @@
     "zrender": "3.4.4"
   },
   "datav": {
-    "cnName": "堆叠区域图",
-    "enName": "echart_stacked",
+    "cnName": "柱状图",
+    "enName": "echart_gradientBar",
     "icon": "//img.alicdn.com/tfs/TB1SRZMJY9YBuNjy0FgXXcxcXXa-270-160.png",
     "protocol": 2,
-    "type": "regular_stacked",
+    "type": "echart_gradientBar",
     "view": {
       "width": "600",
       "height": "200",
@@ -25,7 +25,7 @@
     "apis": {
       "source": {
         "handler": "render",
-        "description": "echart_stacked",
+        "description": "echart_gradientBar",
         "fields": {
           "x": {
             "description": "x坐标轴值"
@@ -41,6 +41,119 @@
       }
     },
     "config": {
+      "global": {
+        "name": "全局",
+        "type": "group",
+        "children": {
+          "mainColor": {
+            "name": "主题色",
+            "type": "group",
+            "children": {
+              "color1": {
+                "name": "颜色1",
+                "type": "color",
+                "default": "#3fb1e3"
+              },
+              "color2": {
+                "name": "颜色2",
+                "type": "color",
+                "default": "#6be6c1"
+              },
+              "color3": {
+                "name": "颜色3",
+                "type": "color",
+                "default": "#626c91"
+              },
+              "color4": {
+                "name": "颜色4",
+                "type": "color",
+                "default": "#a0a7e6"
+              },
+              "color5": {
+                "name": "颜色5",
+                "type": "color",
+                "default": "#c4ebad"
+              },
+              "color6": {
+                "name": "颜色6",
+                "type": "color",
+                "default": "#96dee8"
+              }
+            }
+          },
+          "textStyle": {
+            "name": "文本样式",
+            "type": "group",
+            "children": {
+              "color": {
+                "name": "字体颜色",
+                "type": "color",
+                "default": "#3fb1e3"
+              },
+              "fontSize": {
+                "name": "字号",
+                "type": "number",
+                "default": 12
+              },
+              "fontFamily": {
+                "name": "字体",
+                "type": "search",
+                "options": [
+                  {
+                    "name": "微软雅黑",
+                    "value": "Microsoft Yahei"
+                  },
+                  {
+                    "name": "宋体",
+                    "value": "SimSun"
+                  },
+                  {
+                    "name": "黑体",
+                    "value": "SimHei"
+                  },
+                  {
+                    "name": "隶书",
+                    "value": "LiSu"
+                  },
+                  {
+                    "name": "幼圆",
+                    "value": "YouYuan"
+                  },
+                  {
+                    "name": "arial",
+                    "value": "arial"
+                  },
+                  {
+                    "name": "sans-serif",
+                    "value": "sans-serif"
+                  }
+                ],
+                "default": "Microsoft Yahei"
+              },
+              "fontWeight": {
+                "name": "字体粗细",
+                "type": "search",
+                "searches": [
+                  "normal",
+                  "bold",
+                  "bolder",
+                  "lighter",
+                  100,
+                  200,
+                  300,
+                  400,
+                  500,
+                  600,
+                  700,
+                  800,
+                  900
+                ],
+                "default": "normal"
+              }
+            }
+          }
+        }
+      },
       "grid": {
         "name": "内边距",
         "type": "group",
@@ -69,11 +182,6 @@
             "name": "底部",
             "type": "text",
             "default": "25%"
-          },
-          "containLabel":{
-            "name": "包含坐标轴",
-            "type": "boolean",
-            "default": true
           }
         }
       },
@@ -98,7 +206,7 @@
           "boundaryGap": {
             "name": "两边留白",
             "type": "boolean",
-            "default": false
+            "default": true
           },
           "axisLine": {
             "name": "轴线",
@@ -111,11 +219,8 @@
               },
               "lineStyleColor": {
                 "name": "颜色",
-                "type": "multicolor",
-                "default": {
-                  "style": "single",
-                  "value": "rgba(255,255,255,.8)"
-                }
+                "type": "color",
+                "default": "rgba(255,255,255,.8)"
               }
             }
           },
@@ -159,41 +264,6 @@
                 "type": "color",
                 "default": "rgba(255,255,255,.8)"
               },
-              "fontFamily": {
-                "name": "字体",
-                "type": "search",
-                "options": [
-                  {
-                    "name": "微软雅黑",
-                    "value": "Microsoft YaHei"
-                  },
-                  {
-                    "name": "宋体",
-                    "value": "SimSun"
-                  },
-                  {
-                    "name": "黑体",
-                    "value": "SimHei"
-                  },
-                  {
-                    "name": "隶书",
-                    "value": "LiSu"
-                  },
-                  {
-                    "name": "幼圆",
-                    "value": "YouYuan"
-                  },
-                  {
-                    "name": "arial",
-                    "value": "arial"
-                  },
-                  {
-                    "name": "sans-serif",
-                    "value": "sans-serif"
-                  }
-                ],
-                "default": "Microsoft YaHei"
-              },
               "fontSize": {
                 "name": "字号",
                 "type": "number",
@@ -224,7 +294,7 @@
           "min": {
             "name": "最小值",
             "type": "text",
-            "default": "dataMin"
+            "default": "0"
           },
           "max": {
             "name": "最大值",
@@ -252,11 +322,8 @@
               },
               "lineStyleColor": {
                 "name": "颜色",
-                "type": "multicolor",
-                "default": {
-                  "style": "single",
-                  "value": "rgba(255,255,255,.8)"
-                }
+                "type": "color",
+                "default": "rgba(255,255,255,.8)"
               }
             }
           },
@@ -292,41 +359,6 @@
                     "type": "color",
                     "default": "rgba(255,255,255,.8)"
                   },
-                  "fontFamily": {
-                    "name": "字体",
-                    "type": "search",
-                    "options": [
-                      {
-                        "name": "微软雅黑",
-                        "value": "Microsoft YaHei"
-                      },
-                      {
-                        "name": "宋体",
-                        "value": "SimSun"
-                      },
-                      {
-                        "name": "黑体",
-                        "value": "SimHei"
-                      },
-                      {
-                        "name": "隶书",
-                        "value": "LiSu"
-                      },
-                      {
-                        "name": "幼圆",
-                        "value": "YouYuan"
-                      },
-                      {
-                        "name": "arial",
-                        "value": "arial"
-                      },
-                      {
-                        "name": "sans-serif",
-                        "value": "sans-serif"
-                      }
-                    ],
-                    "default": "Microsoft YaHei"
-                  },
                   "fontSize": {
                     "name": "字号",
                     "type": "number",
@@ -343,7 +375,7 @@
               "show": {
                 "name": "显示",
                 "type": "boolean",
-                "default": true
+                "default": false
               },
               "lineStyle": {
                 "name": "分割线样式",
@@ -384,49 +416,58 @@
             "type": "boolean",
             "default": true
           },
-          "selectedPostion": {
-            "name": "位置",
+          "left": {
+            "name": "左右位置",
             "type": "select",
             "options": [
               {
-                "name": "顶上居中",
-                "value": "topCenter"
+                "name": "居左",
+                "value": "left"
               },
               {
-                "name": "顶上居左",
-                "value": "topLeft"
+                "name": "居中",
+                "value": "center"
               },
               {
-                "name": "顶上居右",
-                "value": "topRight"
-              },
-              {
-                "name": "顶下居中",
-                "value": "bottomCenter"
-              },
-              {
-                "name": "顶下居左",
-                "value": "bottomLeft"
-              },
-              {
-                "name": "顶下居右",
-                "value": "bottomRight"
-              },
-              {
-                "name": "右侧居中",
-                "value": "rightCenter"
-              },
-              {
-                "name": "左侧居中",
-                "value": "leftCenter"
+                "name": "居右",
+                "value": "right"
               }
             ],
-            "default": "topCenter"
+            "default": "left"
           },
-          "selectedMode": {
-            "name": "多选模式",
-            "type": "boolean",
-            "default": true
+          "top": {
+            "name": "上下位置",
+            "type": "select",
+            "options": [
+              {
+                "name": "居上",
+                "value": "top"
+              },
+              {
+                "name": "居中",
+                "value": "middle"
+              },
+              {
+                "name": "居下",
+                "value": "bottom"
+              }
+            ],
+            "default": "middle"
+          },
+          "orient": {
+            "name": "列表朝向",
+            "type": "select",
+            "options": [
+              {
+                "name": "横排",
+                "value": "horizontal"
+              },
+              {
+                "name": "竖排",
+                "value": "vertical"
+              }
+            ],
+            "default": "vertical"
           },
           "textStyle": {
             "name": "文本样式",
@@ -435,42 +476,7 @@
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": "rgba(255,255,255,.6)"
-              },
-              "fontFamily": {
-                "name": "字体",
-                "type": "search",
-                "options": [
-                  {
-                    "name": "微软雅黑",
-                    "value": "Microsoft YaHei"
-                  },
-                  {
-                    "name": "宋体",
-                    "value": "SimSun"
-                  },
-                  {
-                    "name": "黑体",
-                    "value": "SimHei"
-                  },
-                  {
-                    "name": "隶书",
-                    "value": "LiSu"
-                  },
-                  {
-                    "name": "幼圆",
-                    "value": "YouYuan"
-                  },
-                  {
-                    "name": "arial",
-                    "value": "arial"
-                  },
-                  {
-                    "name": "sans-serif",
-                    "value": "sans-serif"
-                  }
-                ],
-                "default": "Microsoft YaHei"
+                "default": "auto"
               },
               "fontSize": {
                 "name": "字号",
@@ -511,11 +517,8 @@
           },
           "backgroundColor": {
             "name": "背景色",
-            "type": "multicolor",
-            "default": {
-              "style": "single",
-              "value": "rgba(50,50,50,0.7)"
-            }
+            "type": "color",
+            "default": "rgba(50,50,50,0.7)"
           },
           "textStyle": {
             "name": "文本样式",
@@ -525,41 +528,6 @@
                 "name": "颜色",
                 "type": "color",
                 "default": "#fff"
-              },
-              "fontFamily": {
-                "name": "字体",
-                "type": "search",
-                "options": [
-                  {
-                    "name": "微软雅黑",
-                    "value": "Microsoft YaHei"
-                  },
-                  {
-                    "name": "宋体",
-                    "value": "SimSun"
-                  },
-                  {
-                    "name": "黑体",
-                    "value": "SimHei"
-                  },
-                  {
-                    "name": "隶书",
-                    "value": "LiSu"
-                  },
-                  {
-                    "name": "幼圆",
-                    "value": "YouYuan"
-                  },
-                  {
-                    "name": "arial",
-                    "value": "arial"
-                  },
-                  {
-                    "name": "sans-serif",
-                    "value": "sans-serif"
-                  }
-                ],
-                "default": "Microsoft YaHei"
               },
               "fontSize": {
                 "name": "字号",
@@ -571,112 +539,47 @@
         }
       },
       "series": {
-        "name": "系列",
+        "name": "数据系列",
         "type": "array",
         "default": [
           {
-            "name": "line",
-            "type": "line",
-            "coordinateSystem": "cartesian2d",
+            "name": "bar",
+            "type": "bar",
             "label": {
               "show": false,
-              "color": "#000",
-              "fontSize": 10
+              "color": "#fff",
+              "fontSize": 12
             },
             "itemStyle": {
               "color": {
-                "style": "single",
-                "value": "#00c2ff"
+                "style": "double",
+                "value": "#00c2ff",
+                "from": "#820014",
+                "to": "#d48806",
+                "angle": 90
               },
-              "borderColor": {
-                "style": "single",
-                "value": "#000"
-              },
-              "borderType": "solid"
+              "barBorderRadius": 0
             },
-            "stack": "1",
             "emphasis": {
               "label": {
                 "show": false,
-                "color": "#000",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-                "fontSize": 10
+                "color": "#fff",
+                "fontSize": 12
               },
               "itemStyle": {
                 "show": true,
                 "color": {
-                  "style": "single",
-                  "value": "#00c2ff"
-                },
-                "borderColor": {
-                  "style": "single",
-                  "value": "#000"
-                },
-                "borderType": "solid"
+                  "style": "double",
+                  "value": "#d48806",
+                  "from": "#820014",
+                  "to": "#00c2ff",
+                  "angle": 90
+                }
               }
             },
-            "lineStyle": {
-              "color": "#00c2ff",
-              "width": 2,
-              "type": "solid"
-            },
-            "areaStyle": {
-              "color": "#1E5D23"
-            },
-            "smooth": true
-          },
-          {
-            "name": "line2",
-            "type": "line",
-            "coordinateSystem": "cartesian2d",
-            "label": {
-              "show": false,
-              "color": "#000",
-              "fontSize": 10
-            },
-            "itemStyle": {
-              "color": {
-                "style": "single",
-                "value": "#5bffb0"
-              },
-              "borderColor": {
-                "style": "single",
-                "value": "#000"
-              },
-              "borderType": "solid"
-            },
-            "stack": "1",
-            "emphasis": {
-              "label": {
-                "show": false,
-                "color": "#000",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-                "fontSize": 10
-              },
-              "itemStyle": {
-                "show": true,
-                "color": {
-                  "style": "single",
-                  "value": "#00c2ff"
-                },
-                "borderColor": {
-                  "style": "single",
-                  "value": "#000"
-                },
-                "borderType": "solid"
-              }
-            },
-            "lineStyle": {
-              "color": "#00FF8A",
-              "width": 2,
-              "type": "solid"
-            },
-            "areaStyle": {
-              "color": "#FF7875"
-            },
-            "smooth": true
+            "barWidth": "auto",
+            "barGap": "30%",
+            "barCategoryGap": "20%"
           }
         ],
         "child": {
@@ -688,11 +591,6 @@
               "type": "text",
               "default": ""
             },
-            "coordinateSystem": {
-              "name": "坐标系",
-              "type": "text",
-              "default": "cartesian2d"
-            },
             "label": {
               "name": "标签",
               "type": "group",
@@ -702,50 +600,15 @@
                   "type": "boolean",
                   "default": false
                 },
-                "fontFamily": {
-                  "name": "字体",
-                  "type": "search",
-                  "options": [
-                    {
-                      "name": "微软雅黑",
-                      "value": "Microsoft YaHei"
-                    },
-                    {
-                      "name": "宋体",
-                      "value": "SimSun"
-                    },
-                    {
-                      "name": "黑体",
-                      "value": "SimHei"
-                    },
-                    {
-                      "name": "隶书",
-                      "value": "LiSu"
-                    },
-                    {
-                      "name": "幼圆",
-                      "value": "YouYuan"
-                    },
-                    {
-                      "name": "arial",
-                      "value": "arial"
-                    },
-                    {
-                      "name": "sans-serif",
-                      "value": "sans-serif"
-                    }
-                  ],
-                  "default": "Microsoft YaHei"
-                },
                 "fontSize": {
                   "name": "字号",
                   "type": "number",
-                  "default": 10
+                  "default": 12
                 },
                 "color": {
                   "name": "颜色",
                   "type": "color",
-                  "default": "#000"
+                  "default": "#fff"
                 }
               }
             },
@@ -753,18 +616,18 @@
               "name": "元素样式",
               "type": "group",
               "children": {
-                "borderColor": {
-                  "name": "边框色",
+                "color": {
+                  "name": "颜色",
                   "type": "multicolor",
                   "default": {
                     "style": "single",
-                    "value": "#000"
+                    "value": "rgba(50,50,50,0.7)"
                   }
                 },
-                "borderType": {
-                  "name": "边框样式",
-                  "type": "text",
-                  "default": "solid"
+                "barBorderRadius": {
+                  "name": "柱圆角",
+                  "type": "number",
+                  "default": 0
                 }
               }
             },
@@ -780,41 +643,6 @@
                       "name": "显示",
                       "type": "boolean",
                       "default": false
-                    },
-                    "fontFamily": {
-                      "name": "字体",
-                      "type": "search",
-                      "options": [
-                        {
-                          "name": "微软雅黑",
-                          "value": "Microsoft YaHei"
-                        },
-                        {
-                          "name": "宋体",
-                          "value": "SimSun"
-                        },
-                        {
-                          "name": "黑体",
-                          "value": "SimHei"
-                        },
-                        {
-                          "name": "隶书",
-                          "value": "LiSu"
-                        },
-                        {
-                          "name": "幼圆",
-                          "value": "YouYuan"
-                        },
-                        {
-                          "name": "arial",
-                          "value": "arial"
-                        },
-                        {
-                          "name": "sans-serif",
-                          "value": "sans-serif"
-                        }
-                      ],
-                      "default": "Microsoft YaHei"
                     },
                     "fontSize": {
                       "name": "字号",
@@ -837,83 +665,42 @@
                       "type": "boolean",
                       "default": false
                     },
-                    "borderColor": {
-                      "name": "边框色",
+                    "color": {
+                      "name": "颜色",
                       "type": "multicolor",
                       "default": {
                         "style": "single",
-                        "value": "#000"
+                        "value": "rgba(50,50,50,0.7)"
                       }
-                    },
-                    "borderWidth": {
-                      "name": "边框粗细",
-                      "type": "number",
-                      "default": 0
-                    },
-                    "borderType": {
-                      "name": "边框样式",
-                      "type": "text",
-                      "default": "solid"
                     }
                   }
                 }
               }
             },
-            "stack": {
-              "name": "堆叠图",
+            "barWidth": {
+              "name": "柱宽",
+              "type": "text",
+              "default": "auto"
+            },
+            "barMaxWidth": {
+              "name": "柱最大宽度",
               "type": "text",
               "default": ""
             },
-            "lineStyle": {
-              "name": "线样式",
-              "type": "group",
-              "children": {
-                "color": {
-                  "name": "颜色",
-                  "type": "color",
-                  "default": "rgba(0,0,0,0)"
-                },
-                "width": {
-                  "name": "线宽",
-                  "type": "number",
-                  "default": 0
-                },
-                "type": {
-                  "name": "边框样式",
-                  "type": "select",
-                  "range": [
-                    {
-                      "name": "实线",
-                      "value": "solid"
-                    },
-                    {
-                      "name": "虚线",
-                      "value": "dashed"
-                    },
-                    {
-                      "name": "点线",
-                      "value": "dotted"
-                    }
-                  ],
-                  "default": "solid"
-                }
-              }
+            "barMinHeight": {
+              "name": "柱最小高度",
+              "type": "number",
+              "default": 0
             },
-            "areaStyle": {
-              "name": "区域填充",
-              "type": "group",
-              "children": {
-                "color": {
-                  "name": "颜色",
-                  "type": "color",
-                  "value": "rgba(0,0,0,0)"
-                }
-              }
+            "barGap": {
+              "name": "柱间距",
+              "type": "text",
+              "default": "30%"
             },
-            "smooth": {
-              "name": "是否平滑曲线",
-              "type": "boolean",
-              "default": false
+            "barCategoryGap": {
+              "name": "同系列柱间距",
+              "type": "text",
+              "default": "20%"
             }
           }
         }
@@ -1014,82 +801,82 @@
         {
           "x": "类目0",
           "y": 120,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目0",
           "y": 30,
-          "s": "line2"
+          "s": "bar2"
         },
         {
           "x": "类目1",
           "y": 20,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目1",
           "y": 105,
-          "s": "line2"
+          "s": "bar2"
         },
         {
           "x": "类目2",
           "y": 130,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目2",
           "y": 180,
-          "s": "line2"
+          "s": "bar2"
         },
         {
           "x": "类目3",
           "y": 110,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目3",
           "y": 20,
-          "s": "line2"
+          "s": "bar2"
         },
         {
           "x": "类目4",
           "y": 30,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目4",
           "y": 90,
-          "s": "line2"
+          "s": "bar2"
         },
         {
           "x": "类目5",
           "y": 30,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目5",
           "y": 80,
-          "s": "line2"
+          "s": "bar2"
         },
         {
           "x": "类目6",
           "y": 50,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目6",
           "y": 30,
-          "s": "line2"
+          "s": "bar2"
         },
         {
           "x": "类目7",
           "y": 120,
-          "s": "line"
+          "s": "bar"
         },
         {
           "x": "类目7",
           "y": 12,
-          "s": "line2"
+          "s": "bar2"
         }
       ]
     }
