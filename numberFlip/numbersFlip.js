@@ -2,7 +2,7 @@
  * @Author: linyee.lqBai
  * @Date: 2019-06-10 19:17:34
  * @LastEditors: linyee.lqBai
- * @LastEditTime: 2019-06-12 17:50:54
+ * @LastEditTime: 2019-06-13 10:44:21
  * @Description: 数字滚动插件
  */
 
@@ -21,12 +21,12 @@ module.exports = function ($) {
     const _setting = $.extend(defaults, setting);
 
     const { border: { show, builtInBorder } } = _setting;
-    console.log(1111, show);
     // 如果对象有多个或者未设置初始化值，提示出错
     if ($(this).length > 1 || _setting.num === '') {
       // TODO 后续完善
       return;
     }
+    console.log(show);
     const nHtml = `
         <div class="number-flip-dom-bg ${show ? `hasBorder ${builtInBorder}` : ''}">
             <div class="number-flip-dom" data-num="{{num}}"
@@ -48,10 +48,32 @@ module.exports = function ($) {
         </div>
 
     `;
-
+    const addZero = function (number, bitNum) {
+      let sx = number.toString();
+      let posDecimal = sx.indexOf('.');
+      if (posDecimal < 0) {
+        posDecimal = sx.length;
+        sx += '.';
+      }
+      while (sx.length <= posDecimal + bitNum) {
+        sx += '0';
+      }
+      return sx;
+    };
     // 数字处理
     const numToArr = function (num) {
-      num = parseFloat(num).toFixed(setting.dot);
+      // 处理小数自动补零的问题
+      console.log(addZero(num, _setting.dot));
+      let sx = num.toString();
+      // 获取小数位数
+      if (sx.indexOf('.') > -1 && (sx.length - sx.indexOf('.')) < _setting.dot) {
+        while (sx.length <= sx.indexOf('.') + _setting.dot) {
+          sx += '0';
+        }
+        num = sx;
+      } else {
+        num = parseFloat(num).toFixed(_setting.dot);
+      }
       if (typeof (num) === 'number') {
         return num.toString().split('');
       }
@@ -64,13 +86,13 @@ module.exports = function ($) {
       const intLen = (Math.floor(+arrStr.join(''))).toString().split('').length;
       let shtml = '<div class="number-flip">';
       for (let i = 0, len = arrStr.length; i < len; i++) {
-        if (i !== 0 && intLen > i && (intLen - i) % 3 === 0 && setting.symbol !== '' && arrStr[i] !== '.') {
-          shtml += `<div class="number-flip-dot">${setting.symbol}</div>${nHtml.replace('{{num}}', arrStr[i])}`;
+        if (i !== 0 && intLen > i && (intLen - i) % 3 === 0 && _setting.symbol !== '' && arrStr[i] !== '.') {
+          shtml += `<div class="number-flip-dot">${_setting.symbol}</div>${nHtml.replace('{{num}}', arrStr[i])}`;
         } else {
           shtml += nHtml.replace('{{num}}', arrStr[i]);
         }
       }
-      if (setting.pct) {
+      if (_setting.pct) {
         shtml += '%</div>';
       } else {
         shtml += '</div>';
@@ -85,23 +107,25 @@ module.exports = function ($) {
         num = (num === '.' ? 11 : num === 0 ? 10 : num);
         const spanHei = $(this).height() / 12; // 11为元素个数
         const thisTop = `${-num * spanHei}px`;
+        console.log(thisTop, $(this).css('top'));
         if (thisTop !== $(this).css('top')) {
-          if (setting.iniAnimate) {
-            // HTML5不支持
+          if (_setting.iniAnimate) {
+          // HTML5不支持
             if (!window.applicationCache) {
               $(this).animate({
                 top: thisTop
-              }, setting.speed);
+              }, _setting.speed);
             } else {
               $(this).css({
                 transform: `translateY(${thisTop})`,
                 '-webkit-transform': `translateY(${thisTop})`,
-                '-webkit-transition': `${setting.speed / 1000}s`,
-                transition: `transform ${setting.speed / 1000}s`
+                '-webkit-transition': `${_setting.speed / 1000}s`,
+                transition: `transform ${_setting.speed / 1000}s`
               });
             }
           } else {
-            setting.iniAnimate = true;
+            _setting.iniAnimate = true;
+            console.log('change');
             $(this).css({
               top: thisTop
             });
@@ -113,7 +137,7 @@ module.exports = function ($) {
     // 初始化
     const init = function ($parent) {
       // 初始化
-      $parent.html(setNumDom(numToArr(setting.num)));
+      $parent.html(setNumDom(numToArr(_setting.num)));
       runAnimate($parent);
     };
 

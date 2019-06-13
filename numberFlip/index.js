@@ -2,15 +2,15 @@
  * @Author: linyee.lqBai
  * @Date: 2019-06-10 16:00:25
  * @LastEditors: linyee.lqBai
- * @LastEditTime: 2019-06-12 11:26:36
+ * @LastEditTime: 2019-06-13 10:11:29
  * @Description:
  */
 /* stylelint-disable */
 import $ from 'jquery';
 import _ from 'lodash';
-import './numberFlip.less';
+import './numbersFlip.less';
 
-require('./numberFlip.js')($);
+require('./numbersFlip.js')($);
 
 /**
  * 马良基础类
