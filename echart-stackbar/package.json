@@ -551,13 +551,8 @@
               "label": {
                 "show": false
               },
-              "stack": {
-                "name": "堆叠图",
-                "type": "text",
-                "default": "1"
-              },
               "itemStyle": {
-                "show": true
+                "show": false
               }
             },
             "barWidth": "auto",
@@ -653,6 +648,11 @@
                   }
                 }
               }
+            },
+            "stack": {
+              "name": "堆叠值",
+              "type": "text",
+              "default": "1"
             },
             "barWidth": {
               "name": "柱宽",

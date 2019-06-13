@@ -348,22 +348,6 @@
               }
             }
           },
-          "axisTick": {
-            "name": "刻度",
-            "type": "group",
-            "children": {
-              "show": {
-                "name": "显示",
-                "type": "boolean",
-                "default": true
-              },
-              "interval": {
-                "name": "分割间隔",
-                "type": "number",
-                "default": 0
-              }
-            }
-          },
           "axisLabel": {
             "name": "刻度标签",
             "type": "group",
