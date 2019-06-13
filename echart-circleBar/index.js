@@ -110,7 +110,7 @@ class EchartCircleBar {
     if (series) {
       series.forEach(n => {
         n.data = _.map(_.filter(this.data, { 's': n.name }), 'y');
-        n.type = "bar"
+        n.type = "bar";
       });
     }
     console.log("-------------------this.config----------------------")

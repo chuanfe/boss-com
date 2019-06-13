@@ -15,13 +15,13 @@ class EchartBar {
 
   init() {
     this.chart = EChart.init(this.container[0]);
-    this.chart.setOption(this.config);
+    this.chart.setOption(this.config,true);
   }
 
   render(data, config) {
     this.fixConfig(config);
     this.fixData(data);
-    this.chart.setOption(this.config);
+    this.chart.setOption(this.config,true);
   }
 
   fixConfig(config) {
@@ -55,6 +55,7 @@ class EchartBar {
         yAxis
       }, {
         xAxis: {
+          boundaryGap: true,
           axisLine: {
             lineStyle: {
               color: xAxis.axisLine.lineStyleColor
@@ -62,17 +63,12 @@ class EchartBar {
           },
           axisTick: {
             lineStyle: {
-              color: xAxis.axisLine.lineStyleColor
+              color: xAxis.axisLine.lineStyleColor,
             }
           }
         },
         yAxis: {
           axisLine: {
-            lineStyle: {
-              color: yAxis.axisLine.lineStyleColor
-            }
-          },
-          axisTick: {
             lineStyle: {
               color: yAxis.axisLine.lineStyleColor
             }

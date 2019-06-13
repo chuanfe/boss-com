@@ -85,16 +85,6 @@
             "name": "文本样式",
             "type": "group",
             "children": {
-              "color": {
-                "name": "字体颜色",
-                "type": "color",
-                "default": "#fff"
-              },
-              "fontSize": {
-                "name": "字号",
-                "type": "number",
-                "default": 12
-              },
               "fontFamily": {
                 "name": "字体",
                 "type": "search",
@@ -129,6 +119,22 @@
                   }
                 ],
                 "default": "Microsoft Yahei"
+              },
+              "fontSize": {
+                "type": "number",
+                "name": "字号",
+                "default": 14,
+                "min": 12,
+                "max": 72,
+                "range": [
+                  10,
+                  72
+                ]
+              },
+              "color": {
+                "name": "字体颜色",
+                "type": "color",
+                "default": "#fff"
               },
               "fontWeight": {
                 "name": "字体粗细",
@@ -203,6 +209,26 @@
             ],
             "default": 0
           },
+          "min": {
+            "name": "最小值",
+            "type": "text",
+            "default": "0"
+          },
+          "max": {
+            "name": "最大值",
+            "type": "text",
+            "default": "dataMax"
+          },
+          "splitNumber": {
+            "name": "分割段数",
+            "type": "number",
+            "default": 5
+          },
+          "minInterval": {
+            "name": "最小间隔大小",
+            "type": "number",
+            "default": 0
+          },
           "axisLine": {
             "name": "轴线",
             "type": "group",
@@ -238,14 +264,20 @@
                 "type": "number",
                 "default": 0
               },
+              "fontSize": {
+                "type": "number",
+                "name": "字号",
+                "default": "",
+                "min": 12,
+                "max": 72,
+                "range": [
+                  10,
+                  72
+                ]
+              },
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": ""
-              },
-              "fontSize": {
-                "name": "字号",
-                "type": "number",
                 "default": ""
               }
             }
@@ -329,14 +361,20 @@
                 ],
                 "default": 8
               },
+              "fontSize": {
+                "type": "number",
+                "name": "字号",
+                "default": "",
+                "min": 12,
+                "max": 72,
+                "range": [
+                  10,
+                  72
+                ]
+              },
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": ""
-              },
-              "fontSize": {
-                "name": "字号",
-                "type": "number",
                 "default": ""
               }
             }
@@ -446,15 +484,21 @@
             "name": "文本样式",
             "type": "group",
             "children": {
+              "fontSize": {
+                "type": "number",
+                "name": "字号",
+                "default": "",
+                "min": 12,
+                "max": 72,
+                "range": [
+                  10,
+                  72
+                ]
+              },
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": ""
-              },
-              "fontSize": {
-                "name": "字号",
-                "type": "number",
-                "default": ""
+                "default": "#fff"
               }
             }
           }
@@ -497,14 +541,20 @@
             "name": "文本样式",
             "type": "group",
             "children": {
+              "fontSize": {
+                "type": "number",
+                "name": "字号",
+                "default": 14,
+                "min": 12,
+                "max": 72,
+                "range": [
+                  10,
+                  72
+                ]
+              },
               "color": {
                 "name": "颜色",
                 "type": "color",
-                "default": ""
-              },
-              "fontSize": {
-                "name": "字号",
-                "type": "number",
                 "default": ""
               }
             }
@@ -524,7 +574,7 @@
               "fontSize": 12
             },
             "itemStyle": {
-              "color": "#00c2ff",
+              "color": "",
               "barBorderRadius": 0
             },
             "emphasis": {
@@ -535,12 +585,10 @@
               },
               "itemStyle": {
                 "show": true,
-                "color": "#00c2ff"
+                "color": ""
               }
             },
-            "barWidth": "auto",
-            "barGap": "30%",
-            "barCategoryGap": "20%"
+            "symbolSize": "20"
           },
           {
             "name": "bubble2",
@@ -551,7 +599,7 @@
               "fontSize": 12
             },
             "itemStyle": {
-              "color": "#A8071A",
+              "color": "",
               "barBorderRadius": 0
             },
             "emphasis": {
@@ -562,12 +610,10 @@
               },
               "itemStyle": {
                 "show": true,
-                "color": "#A8071A"
+                "color": ""
               }
             },
-            "barWidth": "auto",
-            "barGap": "30%",
-            "barCategoryGap": "20%"
+            "symbolSize": "20"
           }
         ],
         "child": {
@@ -579,27 +625,6 @@
               "type": "text",
               "default": ""
             },
-            "label": {
-              "name": "标签",
-              "type": "group",
-              "children": {
-                "show": {
-                  "name": "显示",
-                  "type": "boolean",
-                  "default": false
-                },
-                "fontSize": {
-                  "name": "字号",
-                  "type": "number",
-                  "default": 12
-                },
-                "color": {
-                  "name": "颜色",
-                  "type": "color",
-                  "default": "#fff"
-                }
-              }
-            },
             "itemStyle": {
               "name": "元素样式",
               "type": "group",
@@ -608,11 +633,6 @@
                   "name": "颜色",
                   "type": "color",
                   "default": "#000"
-                },
-                "barBorderRadius": {
-                  "name": "柱圆角",
-                  "type": "number",
-                  "default": 0
                 }
               }
             },
@@ -620,27 +640,6 @@
               "name": "强调样式",
               "type": "group",
               "children": {
-                "label": {
-                  "name": "标签",
-                  "type": "group",
-                  "children": {
-                    "show": {
-                      "name": "显示",
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "fontSize": {
-                      "name": "字号",
-                      "type": "number",
-                      "default": 10
-                    },
-                    "color": {
-                      "name": "颜色",
-                      "type": "color",
-                      "default": "#000"
-                    }
-                  }
-                },
                 "itemStyle": {
                   "name": "元素样式",
                   "type": "group",
@@ -659,30 +658,16 @@
                 }
               }
             },
-            "barWidth": {
-              "name": "柱宽",
-              "type": "text",
-              "default": "auto"
-            },
-            "barMaxWidth": {
-              "name": "柱最大宽度",
-              "type": "text",
-              "default": ""
-            },
-            "barMinHeight": {
-              "name": "柱最小高度",
+            "symbolSize": {
               "type": "number",
-              "default": 0
-            },
-            "barGap": {
-              "name": "柱间距",
-              "type": "text",
-              "default": "30%"
-            },
-            "barCategoryGap": {
-              "name": "同系列柱间距",
-              "type": "text",
-              "default": "20%"
+              "name": "点大小",
+              "default": 14,
+              "min": 12,
+              "max": 72,
+              "range": [
+                12,
+                72
+              ]
             }
           }
         }
