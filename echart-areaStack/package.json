@@ -554,7 +554,10 @@
               "type": "solid"
             },
             "areaStyle": {
-              "color": "#3FB1E3"
+              "color": {
+                "style": "single",
+                "value": "#3FB1E3"
+              }
             },
             "smooth": false
           },
@@ -581,7 +584,10 @@
               "type": "solid"
             },
             "areaStyle": {
-              "color": "#6BE6C1"
+              "color": {
+                "style": "single",
+                "value": "#6BE6C1"
+              }
             },
             "smooth": false
           }
@@ -726,8 +732,11 @@
               "children": {
                 "color": {
                   "name": "颜色",
-                  "type": "color",
-                  "value": ""
+                  "type": "multicolor",
+                  "default": {
+                    "style": "single",
+                    "value": "rgba(150,150,150,0.7)"
+                  }
                 }
               }
             },

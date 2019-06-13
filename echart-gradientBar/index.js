@@ -77,11 +77,6 @@ class EchartBar {
               color: yAxis.axisLine.lineStyleColor
             }
           },
-          axisTick: {
-            lineStyle: {
-              color: yAxis.axisLine.lineStyleColor
-            }
-          },
           splitLine: {
             lineStyle: {
               type: yAxis.splitLine.lineStyle.sType

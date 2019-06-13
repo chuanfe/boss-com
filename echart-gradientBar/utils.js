@@ -1,32 +1,36 @@
 import _ from 'lodash';
 import EChart from 'echarts';
-isMultiColor = function (a) {
-  return a && a.style && (a.value || a.from && a.to)
-}
 
-var g = Math.sin
-  , h = Math.cos
-  , i = Math.cos
-  , j = EChart;
+/* eslint-disable */
+const g = Math.sin,
+  h = Math.cos,
+  i = Math.cos,
+  j = EChart;
+
+const isMultiColor = function (a) {
+  return a && a.style && (a.value || a.from && a.to);
+};
+
+
 const m = 3.14;
 function e(a) {
-  return 2 * m * a / 360
+  return (2 * m * a) / 360;
 }
 function d(a, b) {
-  var d = Math.tan
-    , f = Math.abs;
+  const d = Math.tan,
+    f = Math.abs;
   if (void 0 === a)
     return b;
-  var j = b
-    , k = e(a)
-    , l = g(k)
-    , m = h(k)
-    , c = g(e(45));
+  let j = b,
+    k = e(a),
+    l = g(k),
+    m = h(k),
+    c = g(e(45));
   return 0 < m && f(l) < c ? j = [1, 0.5 + 0.5 * d(k)] : 0 < l && f(m) <= c ? j = [0.5 + 0.5 * i(k), 1] : 0 > m && f(l) < c ? j = [0, 0.5 - 0.5 * d(k)] : 0 > l && f(m) <= c ? j = [0.5 - 0.5 * i(k), 0] : console.log("sorry!"),
     j
 }
 
-config2echartsOptions = function (a) {
+function config2echartsOptions(a) {
   if (isMultiColor(a)) {
     if ("single" === a.style)
       return a.value;
@@ -45,7 +49,7 @@ config2echartsOptions = function (a) {
     a && a.series && !Array.isArray(a.series) && (a.series = [a.series]),
     a
 }
-
+/* eslint-enable */
 module.exports = {
   fixConfigToEchart(config) {
     if (!config) {
@@ -74,15 +78,9 @@ module.exports = {
     } = global;
 
     // color 合并全局mainColor配置项
-    config.color = _.map(mainColor, m => m);
+    config.color = _.map(mainColor, t => t);
     config.textStyle = textStyle;
     config = config2echartsOptions(config);
-    // tooltip.textStyle 合并全局textStyle配置项
-    //config.tooltip.textStyle = _.merge({}, textStyle, config.tooltip.textStyle);
-    // series.textStyle 合并全局textStyle配置项
-    // series.forEach((m) => {
-    //   m.textStyle.normal = _.merge({}, textStyle, m.textStyle.normal);
-    // });
     return config;
   }
 };

@@ -78,20 +78,14 @@ class EchartAreaStack {
               color: yAxis.axisLine.lineStyleColor
             }
           },
-          axisTick: {
-            lineStyle: {
-              color: yAxis.axisLine.lineStyleColor
-            }
-          },
           splitLine: {
             lineStyle: {
               type: yAxis.splitLine.lineStyle.sType
             }
           }
         },
-        ...restconfig,
-      }
-    );
+        ...restconfig
+      });
     return this.config;
   }
 
@@ -109,12 +103,11 @@ class EchartAreaStack {
       xAxis.data = _.uniq(_.map(this.data, 'x'));
     }
     if (series) {
-      series.forEach(n => {
-        n.data = _.map(_.filter(this.data, { 's': n.name }), 'y');
-        n.type = "line"
+      series.forEach((n) => {
+        n.data = _.map(_.filter(this.data, { s: n.name }), 'y');
+        n.type = 'line';
       });
     }
-    console.log("-------------------this.config----------------------")
     console.log(this.config);
   }
 
